@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>اقرأ وتعلّم | المرحلة السادسة - نظام الشهادات</title>
+<meta name="theme-color" content="#0b6b78" />
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--teal:#0b6b78;--teal2:#0f8796;--mint:#e8f8f5;--gold:#d8a437;--cream:#fffaf0;--ink:#20313b;--soft:#f4fbfb;--rose:#fff1ef;--green:#4b8b63;--red:#d85a5a;--shadow:0 18px 45px rgba(10,74,84,.16);--r:28px}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at top right,#dff8f5 0 24%,transparent 24%),radial-gradient(circle at bottom left,#fff1d8 0 18%,transparent 18%),linear-gradient(135deg,#fefdf8,#eaf9fb 55%,#fff7e8);min-height:100vh}.app{max-width:1180px;margin:auto;padding:18px}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(255,255,255,.78);backdrop-filter:blur(16px);z-index:5;border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:10px 12px;box-shadow:0 8px 30px rgba(0,0,0,.06)}.brand{display:flex;gap:10px;align-items:center}.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(145deg,var(--teal),#14a3ac);display:grid;place-items:center;color:#fff;font-size:28px;box-shadow:var(--shadow)}h1,h2,h3,p{margin:0}.brand h1{font-size:24px}.brand p{font-size:13px;color:#557}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button,.btn{border:0;border-radius:16px;padding:12px 16px;background:#fff;color:var(--teal);font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer}.tabs button.active,.btn.primary{background:linear-gradient(135deg,var(--teal),var(--teal2));color:white}.btn.gold{background:linear-gradient(135deg,#f4c95d,var(--gold));color:#4b3502}.btn.danger{background:#fff1f1;color:#a73333}.hero{margin-top:18px;display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.card{background:rgba(255,255,255,.84);border:1px solid rgba(255,255,255,.95);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:auto -60px -90px auto;width:190px;height:190px;background:radial-gradient(circle,rgba(216,164,55,.18),transparent 60%);border-radius:50%;pointer-events:none}.title{font-size:34px;line-height:1.4}.subtitle{color:#48616b;margin-top:8px}.pattern{background-image:linear-gradient(45deg,rgba(11,107,120,.08) 25%,transparent 25%),linear-gradient(-45deg,rgba(216,164,55,.08) 25%,transparent 25%);background-size:26px 26px;border-radius:24px;padding:14px;margin-top:16px}.progress{height:16px;background:#e7eeee;border-radius:999px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--green),var(--gold));width:0%;border-radius:999px;transition:.5s}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.tile{border:0;text-align:right;background:#fff;border-radius:24px;padding:18px;min-height:130px;box-shadow:0 10px 28px rgba(11,107,120,.1);cursor:pointer;transition:.2s}.tile:hover{transform:translateY(-4px) scale(1.01)}.icon{font-size:34px;display:block;margin-bottom:8px}.section{display:none;margin-top:18px}.section.active{display:block}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.list{display:grid;gap:10px}.item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 6px 18px rgba(0,0,0,.06)}.badge{background:var(--mint);color:var(--teal);border-radius:999px;padding:6px 10px;font-weight:800;white-space:nowrap}.badge.gold{background:#fff2cf;color:#865d04}.badge.red{background:#fff0f0;color:#a93333}.muted{color:#64757d;font-size:14px}.ayat{font-size:22px;line-height:2;background:#fff8e7;border-radius:22px;padding:14px;border:1px solid #f3e3bb}.recordBox{display:grid;gap:12px}.meter{height:9px;background:#eee;border-radius:99px;overflow:hidden}.meter span{display:block;height:100%;background:#df4b4b;width:0%;transition:.2s}.gameArea{min-height:250px;background:linear-gradient(180deg,#fff,#f2fbfa);border-radius:24px;padding:16px;border:2px dashed rgba(11,107,120,.18)}.letters{display:flex;gap:10px;flex-wrap:wrap}.letter{font-size:32px;font-weight:900;border:0;background:#fff;border-radius:20px;width:74px;height:74px;box-shadow:0 10px 22px rgba(0,0,0,.08);cursor:pointer}.ok{outline:4px solid #8ed39c}.bad{outline:4px solid #f7a1a1}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border-radius:22px;padding:16px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)}.stat b{font-size:26px;color:var(--teal)}.cert{background:#fff;border:8px double var(--gold);border-radius:22px;padding:24px;text-align:center;max-width:760px;margin:auto}.cert h2{font-size:42px;color:var(--teal)}.rights{margin-top:18px;text-align:center;color:#50636b;font-size:14px;line-height:1.9}.noBreak{white-space:nowrap}.modal{position:fixed;inset:0;background:rgba(2,29,36,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modal .card{max-width:560px;width:100%;text-align:center}.pillInput{border:1px solid #dce8ea;border-radius:16px;padding:12px 14px;font:inherit;width:100%;background:#fff}.hidden{display:none!important}.sortable{display:flex;gap:10px;flex-wrap:wrap}.word{border:0;border-radius:16px;padding:12px 14px;background:#fff;box-shadow:0 6px 16px rgba(0,0,0,.08);font-weight:800;cursor:pointer}.word.selected{background:var(--teal);color:#fff}
+.teacherTools{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}.table{width:100%;border-collapse:separate;border-spacing:0 10px;margin-top:12px}.table th{font-size:13px;color:#60727a;text-align:right;padding:0 10px}.table td{background:#fff;padding:12px 10px;border-top:1px solid #edf3f4;border-bottom:1px solid #edf3f4}.table td:first-child{border-radius:0 16px 16px 0;border-right:1px solid #edf3f4}.table td:last-child{border-radius:16px 0 0 16px;border-left:1px solid #edf3f4}.select{border:1px solid #dce8ea;border-radius:14px;padding:10px;background:#fff;font:inherit}.miniBtn{border:0;border-radius:12px;padding:9px 11px;background:#f3fbfb;color:var(--teal);font-weight:800;cursor:pointer}.miniBtn.gold{background:#fff2cf;color:#805b05}.miniBtn.green{background:#eaf8ee;color:#256138}.miniBtn.red{background:#fff0f0;color:#a73333}.noteBox{min-height:88px;resize:vertical}.timeline{border-right:4px solid rgba(11,107,120,.18);padding-right:14px;display:grid;gap:12px}.timeline .step{background:#fff;border-radius:18px;padding:12px;box-shadow:0 6px 16px rgba(0,0,0,.05)}
+.statusDot{display:inline-block;width:12px;height:12px;border-radius:50%;margin-left:6px}.greenDot{background:#55b76a}.yellowDot{background:#e7b63b}.redDot{background:#dc6868}.miniProgress{height:10px;background:#edf3f4;border-radius:999px;overflow:hidden;margin-top:8px}.miniProgress span{display:block;height:100%;background:linear-gradient(90deg,var(--teal),var(--gold));border-radius:999px}.profileTitle{font-size:20px;color:var(--teal);font-weight:900}
+@media(max-width:850px){.teacherTools{grid-template-columns:1fr}.table{font-size:13px}.table td,.table th{padding:9px 6px}}
+@media(max-width:850px){.hero,.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.title{font-size:28px}.tabs{width:100%}.tabs button{flex:1}}@media(max-width:520px){.grid{grid-template-columns:1fr}.brand h1{font-size:20px}.top{align-items:flex-start;flex-direction:column}.tile{min-height:105px}.item{align-items:flex-start;flex-direction:column}.letter{width:62px;height:62px}}
+@media print{body{background:#fff}.top,.grid,.rights,.btn:not(.printKeep){display:none!important}.section{display:none}.section#printCert{display:block}.cert{box-shadow:none;border-color:#8b0b24}}
+</style>
+</head>
+<body>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo">📖</div><div><h1>اقرأ وتعلّم</h1><p>رحلة الطفل الأولى مع القرآن</p></div></div>
+  <nav class="tabs">
+    <button class="active" data-tab="child">الطفل</button><button data-tab="teacher">المعلمة</button><button data-tab="supervisor">المشرفة</button><button data-tab="manager">المديرة</button><button data-tab="certificate">الشهادات</button>
+  </nav>
+</header>
+
+<section id="child" class="section active">
+  <div class="hero">
+    <div class="card">
+      <h2 class="title">أهلًا بك في رحلة اقرأ وتعلّم</h2>
+      <p class="subtitle">منصة صيفية للأطفال تجمع بين سورة العلق، الحروف، التسميع الصوتي، الألعاب، والجوائز.</p>
+      <div class="pattern"><b>تقدمي اليوم</b><div class="progress" style="margin-top:10px"><div id="mainBar" class="bar"></div></div><p class="muted" style="margin-top:8px">النجوم: <b id="stars">0</b> ⭐ | الجوائز: <b id="gifts">0</b> 🏆 | الإنجاز: <b id="progressText">0%</b></p></div>
+      <button class="btn primary" onclick="showTab('quran')" style="margin-top:14px">ابدأ الرحلة ✨</button>
+    </div>
+    <div class="card">
+      <h3>مهام اليوم</h3><div class="list" id="todayTasks" style="margin-top:12px"></div>
+    </div>
+  </div>
+  <div class="grid">
+    <button class="tile" onclick="showTab('quran')"><span class="icon">📖</span><b>سورة العلق</b><p class="muted">حسب التوزيع المعتمد</p></button>
+    <button class="tile" onclick="showTab('record')"><span class="icon">🎤</span><b>التسميع الصوتي</b><p class="muted">تسجيل وإرسال للمعلمة</p></button>
+    <button class="tile" onclick="showTab('letters')"><span class="icon">🔤</span><b>الحروف</b><p class="muted">صوت الحرف وكتابته</p></button>
+    <button class="tile" onclick="showTab('games')"><span class="icon">🎮</span><b>الألعاب التعليمية</b><p class="muted">مرتبطة بالحروف والآيات</p></button>
+    <button class="tile" onclick="openGift()"><span class="icon">🎁</span><b>صندوق المكافآت</b><p class="muted">افتح جائزتك</p></button>
+    <button class="tile" onclick="showTab('certificate')"><span class="icon">🎓</span><b>الشهادة</b><p class="muted">إصدار وطباعة</p></button>
+  </div>
+</section>
+
+<section id="quran" class="section">
+  <div class="two"><div class="card"><h2>📖 سورة العلق</h2><p class="subtitle">مسار الحفظ اليومي</p><div class="ayat" id="currentAyah" style="margin-top:14px"></div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" onclick="speakAyah()">استمع للتلاوة</button><button class="btn" onclick="showTab('record')">سجّل قراءتي</button><button class="btn gold" onclick="completeTask('quran')">تم الاستماع ⭐</button></div><p class="muted" style="margin-top:10px">التلاوة في هذا النموذج تعمل بصوت الجهاز، ويمكن استبدالها لاحقًا بملف صوت القارئ المعتمد.</p></div><div class="card"><h3>توزيع سورة العلق</h3><div class="list" id="ayahPlan"></div></div></div>
+</section>
+<section id="record" class="section"><div class="card recordBox"><h2>🎤 التسميع الصوتي</h2><p class="subtitle">يسمح المتصفح بالتسجيل بعد الضغط على زر البدء.</p><div class="item"><span>الحالة: <b id="recState">جاهز للتسجيل</b></span><span class="badge" id="timer">00:00</span></div><div class="meter"><span id="meter"></span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="startRec">ابدأ التسجيل</button><button class="btn" id="stopRec" disabled>إيقاف</button><button class="btn gold" id="sendRec" disabled>إرسال للمعلمة</button><button class="btn danger" id="resetRec" disabled>إعادة التسجيل</button></div><audio id="playback" controls style="width:100%;display:none"></audio><p class="muted">يحفظ التسجيل خلال الجلسة الحالية ويظهر للمعلمة والمشرفة للاستماع.</p></div></section>
+<section id="letters" class="section"><div class="card"><h2>🔤 عالم الحروف</h2><p class="subtitle">اضغط على الحرف لسماع اسمه، ثم انتقل للعبة.</p><div class="letters" id="letterList" style="margin-top:14px"></div><button class="btn gold" onclick="completeTask('letters')" style="margin-top:14px">أنجزت الحروف ⭐</button></div></section>
+<section id="games" class="section"><div class="two"><div class="card"><h2>🎮 لعبة الحرف الصحيح</h2><p class="subtitle" id="gamePrompt">اختاري الحرف الصحيح: ب</p><div class="gameArea"><div class="letters" id="gameLetters"></div><p id="gameMsg" style="margin-top:18px;font-weight:900"></p></div><button class="btn primary" onclick="newGame()" style="margin-top:12px">لعبة جديدة</button></div><div class="card"><h2>📖 رتبي كلمات الآية</h2><p class="subtitle">اضغطي الكلمات بالترتيب الصحيح.</p><div class="gameArea"><div id="orderWords" class="sortable"></div><p class="muted" style="margin-top:12px">اختيارك: <b id="chosenWords"></b></p><p id="orderMsg" style="margin-top:12px;font-weight:900"></p></div><button class="btn primary" onclick="newOrderGame()" style="margin-top:12px">إعادة اللعبة</button></div></div></section>
+
+<section id="certificate" class="section">
+  <div class="card">
+    <h2>🎓 نظام الشهادات</h2>
+    <p class="subtitle">منظومة إصدار واعتماد وأرشفة الشهادات، مع شاشة احتفال للطفل قبل عرض الشهادة.</p>
+    <div class="stats" style="margin-top:14px">
+      <div class="stat"><b id="certReady">3</b><p>مستحقون للشهادة</p></div>
+      <div class="stat"><b id="certIssued">0</b><p>شهادات صادرة</p></div>
+      <div class="stat"><b id="certWaiting">2</b><p>بانتظار الاعتماد</p></div>
+      <div class="stat"><b id="certArchiveCount">0</b><p>في الأرشيف</p></div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:16px">
+    <div class="card">
+      <h3>✅ شروط إصدار الشهادة</h3>
+      <div class="list" style="margin-top:12px" id="certConditions">
+        <div class="item"><span>إكمال سورة العلق</span><span class="badge">مكتمل</span></div>
+        <div class="item"><span>إكمال الحروف المطلوبة</span><span class="badge">مكتمل</span></div>
+        <div class="item"><span>إنهاء الألعاب التعليمية</span><span class="badge gold">قيد المراجعة</span></div>
+        <div class="item"><span>اعتماد المعلمة</span><span class="badge">مكتمل</span></div>
+        <div class="item"><span>اعتماد المشرفة</span><span class="badge gold">بانتظار الاعتماد</span></div>
+      </div>
+      <button class="btn gold" style="margin-top:14px" onclick="approveCertificate()">اعتماد المشرفة للشهادة</button>
+    </div>
+
+    <div class="card">
+      <h3>📝 بيانات الشهادة</h3>
+      <div class="list" style="margin-top:12px">
+        <input id="studentName" class="pillInput" placeholder="اسم الطفل/ـة" value="سارة">
+        <input id="centerName" class="pillInput" placeholder="اسم المركز" value="مركز زينب بنت العوام">
+        <select id="certGrade" class="select"><option>ممتاز</option><option>جيد جدًا</option><option>جيد</option></select>
+        <input id="certClass" class="pillInput" placeholder="الفصل" value="روضة أ">
+        <button class="btn primary" onclick="celebrateBeforeCert()">إصدار الشهادة</button>
+        <button class="btn" onclick="showTab('certArchive')">عرض الأرشيف</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>🏆 الأطفال المستحقون</h3>
+    <table class="table">
+      <thead><tr><th>الطفل</th><th>الفصل</th><th>الإنجاز</th><th>الحالة</th><th>الإجراء</th></tr></thead>
+      <tbody id="certCandidates"></tbody>
+    </table>
+  </div>
+</section>
+
+<section id="certCelebrate" class="section">
+  <div class="card" style="text-align:center;min-height:420px;display:grid;place-items:center">
+    <div>
+      <div style="font-size:70px">🎉</div>
+      <h2 class="title">مبارك يا بطل القرآن</h2>
+      <p class="subtitle" style="font-size:20px">لقد أكملت رحلتك بنجاح</p>
+      <div class="stats" style="margin-top:18px">
+        <div class="stat"><b id="celebrateStars">45</b><p>نجمة</p></div>
+        <div class="stat"><b>6</b><p>أوسمة</p></div>
+        <div class="stat"><b>1</b><p>شهادة</p></div>
+        <div class="stat"><b>100%</b><p>إنجاز</p></div>
+      </div>
+      <button class="btn primary" style="margin-top:22px" onclick="makeCert()">🎓 عرض الشهادة</button>
+    </div>
+  </div>
+</section>
+
+<section id="certArchive" class="section">
+  <div class="card">
+    <h2>📁 أرشيف الشهادات</h2>
+    <p class="subtitle">كل شهادة صادرة تُحفظ هنا، ويمكن إعادة عرضها أو طباعتها.</p>
+    <div class="list" id="certArchiveList" style="margin-top:14px"></div>
+  </div>
+</section>
+
+<section id="printCert" class="section">
+  <div class="cert" style="position:relative;background:linear-gradient(180deg,#fff,#fffaf0)">
+    <p style="text-align:left;color:#8b0b24">رقم الشهادة: <span id="certNo"></span></p>
+    <div style="font-size:42px;color:var(--teal);margin-bottom:8px">📖</div>
+    <h2>تهنئة</h2>
+    <p style="font-size:20px;margin-top:12px">يسر <b id="certCenter">المركز</b> تهنئة أسرة الطفل / الطفلة</p>
+    <h3 id="certStudent" style="font-size:36px;margin:14px 0;color:#233;border-bottom:2px solid #e9d49a;display:inline-block;padding:0 30px">............................</h3>
+    <p>على المستوى المتميز الذي ظهر به خلال البرنامج الصيفي</p>
+    <p style="margin-top:10px">وقد اجتاز الرحلة التعليمية بتقدير <b id="certGradeOut">ممتاز</b></p>
+    <p class="muted" style="margin-top:8px">الفصل: <span id="certClassOut">روضة أ</span></p>
+    <p style="margin-top:16px">نسأل الله له ولأسرته دوام التوفيق والسداد</p>
+    <div class="two" style="margin-top:26px">
+      <p>إشراف<br><b>أ. غالية الغامدي</b></p>
+      <p>فكرة وتصميم وإخراج<br><b>أ. تهاني القرشي</b></p>
+    </div>
+    <div style="margin-top:18px;border-top:1px dashed #d8c48c;padding-top:12px;color:#60727a;font-size:13px">
+      المحتوى التعليمي: جمعية فرقان لتحفيظ القرآن بالطائف
+    </div>
+    <button class="btn primary printKeep" onclick="window.print()" style="margin-top:18px">طباعة الشهادة</button>
+    <button class="btn gold printKeep" onclick="showTab('certArchive')" style="margin-top:18px">الأرشيف</button>
+  </div>
+</section>
+
+<section id="teacher" class="section">
+  <div class="card">
+    <h2>👩‍🏫 لوحة المعلمة</h2>
+    <p class="subtitle">إدارة الأطفال، متابعة التسميع، التقييم، الملاحظات، ومنح التعزيز.</p>
+    <div class="stats" style="margin-top:14px">
+      <div class="stat"><b id="teacherStudents">18</b><p>طفل</p></div>
+      <div class="stat"><b id="teacherRec">0</b><p>تسجيل جديد</p></div>
+      <div class="stat"><b id="teacherDone">0%</b><p>إنجاز الفصل</p></div>
+      <div class="stat"><b id="teacherStars">0</b><p>نجوم ممنوحة</p></div>
+    </div>
+    <div class="teacherTools">
+      <div class="card" style="box-shadow:none;background:#f8fdfd">
+        <h3>إضافة طفل</h3>
+        <div class="list" style="margin-top:12px">
+          <input id="newStudentName" class="pillInput" placeholder="اسم الطفل">
+          <select id="newStudentClass" class="select"><option>روضة أ</option><option>روضة ب</option><option>تمهيدي</option></select>
+          <button class="btn primary" onclick="addStudent()">إضافة إلى القائمة</button>
+        </div>
+      </div>
+      <div class="card" style="box-shadow:none;background:#fffaf0">
+        <h3>اعتماد سريع للتسميع</h3>
+        <p class="muted" style="margin-top:8px">اختاري الطفل، ثم استمعي وسجلي التقييم والملاحظة.</p>
+        <div class="list" style="margin-top:12px">
+          <select id="evalStudent" class="select"></select>
+          <select id="evalGrade" class="select"><option>ممتاز</option><option>جيد جدًا</option><option>جيد</option><option>يحتاج تدريب</option></select>
+          <textarea id="evalNote" class="pillInput noteBox" placeholder="ملاحظة المعلمة"></textarea>
+          <button class="btn gold" onclick="saveEvaluation()">اعتماد التسميع وإرسال التعزيز</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:16px">
+    <div class="card">
+      <h3>قائمة الأطفال</h3>
+      <table class="table">
+        <thead><tr><th>الطفل</th><th>الفصل</th><th>الإنجاز</th><th>التسميع</th><th>الإجراء</th></tr></thead>
+        <tbody id="teacherTable"></tbody>
+      </table>
+    </div>
+    <div class="card">
+      <h3>سجل التقييمات</h3>
+      <div id="teacherTimeline" class="timeline" style="margin-top:14px"></div>
+    </div>
+  </div>
+</section>
+<section id="supervisor" class="section">
+  <div class="card">
+    <h2>👩‍💼 لوحة المشرفة</h2>
+    <p class="subtitle">مركز متابعة شامل لمؤشرات الأداء وسماع قراءات الأطفال ومتابعة الفصول.</p>
+    <div class="stats" style="margin-top:14px"><div class="stat"><b id="supChildren">48</b><p>الأطفال</p></div><div class="stat"><b id="supRecords">0</b><p>تسجيلات اليوم</p></div><div class="stat"><b id="supAvg">94%</b><p>متوسط الأداء</p></div><div class="stat"><b id="supProgress">0%</b><p>الإنجاز العام</p></div></div>
+  </div>
+  <div class="two" style="margin-top:16px"><div class="card"><h3>📌 يحتاج إلى متابعتي اليوم</h3><div class="list" id="supervisorAlerts" style="margin-top:12px"></div></div><div class="card"><h3>📊 متابعة الفصول</h3><p class="muted" style="margin-top:6px">اضغطي على الفصل لعرض الأطفال والتسجيلات.</p><div class="list" id="supervisorClasses" style="margin-top:12px"></div></div></div>
+  <div class="two" style="margin-top:16px"><div class="card"><h3>👧 ملفات الأطفال</h3><div class="list" id="supervisorStudents" style="margin-top:12px"></div></div><div class="card"><h3>🎤 سجل القراءة</h3><div id="studentProfile" class="list" style="margin-top:12px"><div class="item"><span class="muted">اختاري طفلًا من القائمة لعرض التسجيلات والمؤشرات.</span></div></div></div></div>
+  <div class="card" style="margin-top:16px"><h3>📈 مؤشرات تفصيلية</h3><div class="stats" style="margin-top:14px"><div class="stat"><b>روضة أ</b><p>92%</p></div><div class="stat"><b>روضة ب</b><p>78%</p></div><div class="stat"><b>تمهيدي</b><p>69%</p></div><div class="stat"><b>الشهادات</b><p id="supCerts">0 مستحقة</p></div></div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" onclick="downloadSupervisorReport()">تقرير المشرفة</button><button class="btn gold" onclick="showTab('certificate')">إصدار شهادة</button><button class="btn" onclick="playLast()">سماع آخر تسجيل</button></div></div>
+</section>
+<section id="manager" class="section">
+  <div class="card">
+    <h2>👩‍💻 لوحة المديرة</h2>
+    <p class="subtitle">لوحة قيادة شاملة لمتابعة المركز كاملًا: الأطفال، المعلمات، التسميعات، الإنجاز، والتنبيهات.</p>
+    <div class="stats" style="margin-top:14px">
+      <div class="stat"><b id="mgrChildren">48</b><p>إجمالي الأطفال</p></div>
+      <div class="stat"><b id="mgrRecords">0</b><p>إجمالي التسجيلات</p></div>
+      <div class="stat"><b id="mgrProgress">0%</b><p>الإنجاز العام</p></div>
+      <div class="stat"><b id="mgrCerts">0</b><p>شهادات مستحقة</p></div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:16px">
+    <div class="card">
+      <h3>📌 ملخص اليوم</h3>
+      <div class="list" style="margin-top:12px">
+        <div class="item"><span><span class="statusDot greenDot"></span>التسميعات المعتمدة اليوم</span><span class="badge" id="mgrApproved">0</span></div>
+        <div class="item"><span><span class="statusDot yellowDot"></span>تسميعات تنتظر التقييم</span><span class="badge gold" id="mgrPending">0</span></div>
+        <div class="item"><span><span class="statusDot redDot"></span>أطفال يحتاجون متابعة</span><span class="badge red">3</span></div>
+        <div class="item"><span>🏆 أكثر فصل نشاطًا</span><span class="badge">روضة أ</span></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h3>📊 أداء الفصول</h3>
+      <div class="list" style="margin-top:12px">
+        <div class="item" onclick="showTab('supervisor')" style="cursor:pointer"><div><b>روضة أ</b><div class="miniProgress"><span style="width:92%"></span></div></div><span class="badge">92%</span></div>
+        <div class="item" onclick="showTab('supervisor')" style="cursor:pointer"><div><b>روضة ب</b><div class="miniProgress"><span style="width:78%"></span></div></div><span class="badge gold">78%</span></div>
+        <div class="item" onclick="showTab('supervisor')" style="cursor:pointer"><div><b>تمهيدي</b><div class="miniProgress"><span style="width:69%"></span></div></div><span class="badge red">69%</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="two" style="margin-top:16px">
+    <div class="card">
+      <h3>👩‍🏫 أداء المعلمات</h3>
+      <table class="table">
+        <thead><tr><th>المعلمة</th><th>الفصل</th><th>اعتماد التسميع</th><th>التفاعل</th></tr></thead>
+        <tbody>
+          <tr><td>المعلمة الأولى</td><td>روضة أ</td><td><span id="tApproved1">12</span></td><td><span class="badge">ممتاز</span></td></tr>
+          <tr><td>المعلمة الثانية</td><td>روضة ب</td><td><span id="tApproved2">8</span></td><td><span class="badge gold">جيد جدًا</span></td></tr>
+          <tr><td>المعلمة الثالثة</td><td>تمهيدي</td><td><span id="tApproved3">6</span></td><td><span class="badge red">يحتاج متابعة</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card">
+      <h3>🎓 الشهادات والاعتماد</h3>
+      <div class="list" style="margin-top:12px">
+        <div class="item"><span>أطفال مؤهلون للشهادة</span><span class="badge" id="mgrReadyCerts">0</span></div>
+        <div class="item"><span>شهادات صدرت</span><span class="badge gold">0</span></div>
+        <div class="item"><span>بانتظار اعتماد المديرة</span><span class="badge red" id="mgrNeedApprove">0</span></div>
+      </div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px">
+        <button class="btn primary" onclick="showTab('certificate')">إصدار شهادة</button>
+        <button class="btn gold" onclick="managerReport()">تقرير المركز</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="card" style="margin-top:16px">
+    <h3>🚨 تنبيهات المديرة</h3>
+    <div class="list" style="margin-top:12px" id="managerAlerts">
+      <div class="item"><span>🔴 يوجد 3 أطفال لم يرسلوا تسميعًا منذ يومين</span><button class="miniBtn" onclick="showTab('supervisor')">متابعة</button></div>
+      <div class="item"><span>🟡 توجد تسميعات بانتظار تقييم المعلمة</span><button class="miniBtn gold" onclick="showTab('teacher')">عرض</button></div>
+      <div class="item"><span>🟢 يمكن اعتماد الشهادات بعد اكتمال الإنجاز</span><button class="miniBtn green" onclick="showTab('certificate')">اعتماد</button></div>
+    </div>
+  </div>
+</section>
+
+<div class="rights"><b>المحتوى التعليمي</b><br>جمعية فرقان لتحفيظ القرآن بالطائف<br><b>فكرة وتصميم وإخراج</b><br><span class="noBreak">أ. تهاني القرشي</span><br><b>إشراف</b><br><span class="noBreak">أ. غالية الغامدي</span></div>
+</div>
+<div id="giftModal" class="modal"><div class="card"><h2>🎁 مبارك!</h2><p id="giftText" style="font-size:22px;margin:14px 0">حصلت على وسام القارئ المجتهد</p><button class="btn primary" onclick="closeGift()">إغلاق</button></div></div>
+<script>
+const $=id=>document.getElementById(id); const sections=[...document.querySelectorAll('.section')]; const tabBtns=[...document.querySelectorAll('.tabs button')];
+const state=JSON.parse(localStorage.getItem('iqraStateV6')||'{"stars":8,"gifts":2,"done":{},"records":0,"certs":0}'); let lastAudioUrl='';
+function save(){localStorage.setItem('iqraStateV6',JSON.stringify(state)); renderDashboard();}
+function showTab(id){sections.forEach(s=>s.classList.remove('active')); $(id)?.classList.add('active'); tabBtns.forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); window.scrollTo({top:0,behavior:'smooth'});} tabBtns.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+const plan=[['1','آية 1–2','اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ'],['2','آية 3','اقْرَأْ وَرَبُّكَ الْأَكْرَمُ'],['3','آية 4–5','الَّذِي عَلَّمَ بِالْقَلَمِ ۝ عَلَّمَ الْإِنسَانَ مَا لَمْ يَعْلَمْ'],['4','آية 6','كَلَّا إِنَّ الْإِنسَانَ لَيَطْغَى'],['5','آية 7–8','أَن رَّآهُ اسْتَغْنَى ۝ إِنَّ إِلَى رَبِّكَ الرُّجْعَى'],['6','آية 9 + مراجعة','مراجعة وتثبيت'],['7','آية 10','عَبْدًا إِذَا صَلَّى'],['8','آية 11–12','أَرَأَيْتَ إِن كَانَ عَلَى الْهُدَى ۝ أَوْ أَمَرَ بِالتَّقْوَى'],['9','آية 13 + مراجعة','مراجعة وتثبيت'],['10','آية 14','أَلَمْ يَعْلَم بِأَنَّ اللَّهَ يَرَى'],['11','آية 15','كَلَّا لَئِن لَّمْ يَنتَهِ لَنَسْفَعًا بِالنَّاصِيَةِ'],['12','آية 16 + مراجعة','مراجعة وتثبيت'],['13','آية 17','فَلْيَدْعُ نَادِيَهُ'],['14','آية 18','سَنَدْعُ الزَّبَانِيَةَ'],['15','آية 19 + مراجعة','كَلَّا لَا تُطِعْهُ وَاسْجُدْ وَاقْتَرِب']];
+$('currentAyah').textContent=plan[0][2]; $('ayahPlan').innerHTML=plan.map((p,i)=>`<div class="item"><span>اليوم ${p[0]}: ${p[1]}</span><span class="badge ${i<3?'':'gold'}">${i<3?'مفتوح':'قريبًا'}</span></div>`).join('');
+const letters='ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split(''); $('letterList').innerHTML=letters.map(l=>`<button class="letter" onclick="say('${l}')">${l}</button>`).join('');
+function say(txt){try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.78;speechSynthesis.speak(u)}catch(e){}}
+function speakAyah(){say(plan[0][2])}
+function completeTask(k){if(!state.done[k]){state.done[k]=true; state.stars+=2; openGift('أحسنتِ، تمت إضافة نجمتين ⭐⭐');} save();}
+function renderTasks(){const tasks=[['quran','📖 استمع للآيات 1–2','اليوم 1'],['record','🎙️ سجّل قراءتك','بانتظارك'],['letters','🔤 حرف أ / ب / ت','حروف'],['game','🎮 لعبة الحرف الصحيح','+10']]; $('todayTasks').innerHTML=tasks.map(t=>`<div class="item"><span>${t[1]}</span><span class="badge ${state.done[t[0]]?'gold':''}">${state.done[t[0]]?'تم':t[2]}</span></div>`).join('')}
+let target='ب'; function newGame(){target=letters[Math.floor(Math.random()*letters.length)]; $('gamePrompt').textContent='اختاري الحرف الصحيح: '+target; let opts=[target]; while(opts.length<5){let l=letters[Math.floor(Math.random()*letters.length)]; if(!opts.includes(l))opts.push(l)} opts.sort(()=>Math.random()-.5); $('gameLetters').innerHTML=opts.map(l=>`<button class="letter" onclick="checkGame(this,'${l}')">${l}</button>`).join(''); $('gameMsg').textContent='';}
+function checkGame(btn,l){if(l===target){btn.classList.add('ok');$('gameMsg').textContent='أحسنت ⭐ +10 نقاط'; if(!state.done.game){state.done.game=true; state.stars+=1;} save(); say('أحسنت')}else{btn.classList.add('bad');$('gameMsg').textContent='حاولي مرة أخرى';say('حاولي مرة أخرى')}} newGame();
+let phrase=['اقرأ','باسم','ربك','الذي','خلق'], chosen=[]; function newOrderGame(){chosen=[]; $('chosenWords').textContent=''; $('orderMsg').textContent=''; $('orderWords').innerHTML=[...phrase].sort(()=>Math.random()-.5).map(w=>`<button class="word" onclick="pickWord(this,'${w}')">${w}</button>`).join('')}
+function pickWord(btn,w){if(btn.classList.contains('selected'))return; btn.classList.add('selected'); chosen.push(w); $('chosenWords').textContent=chosen.join(' '); if(chosen.length===phrase.length){ if(chosen.join(' ')==phrase.join(' ')){ $('orderMsg').textContent='ترتيب صحيح، أحسنتِ 🏆'; if(!state.done.order){state.done.order=true; state.stars+=2; state.gifts+=1;} save(); } else {$('orderMsg').textContent='الترتيب يحتاج إعادة، حاولي مرة أخرى';}}} newOrderGame();
+function openGift(custom){let gifts=['وسام القارئ المجتهد 🏅','نجمتان إضافيتان ⭐⭐','وسام إتقان الحروف 🔤','كأس بطل اليوم 🏆']; $('giftText').textContent=custom||gifts[Math.floor(Math.random()*gifts.length)]; $('giftModal').classList.add('show')} function closeGift(){$('giftModal').classList.remove('show')}
+let mediaRecorder,chunks=[],sec=0,int; $('startRec').onclick=async()=>{try{let stream=await navigator.mediaDevices.getUserMedia({audio:true}); mediaRecorder=new MediaRecorder(stream); chunks=[]; mediaRecorder.ondataavailable=e=>chunks.push(e.data); mediaRecorder.onstop=()=>{let blob=new Blob(chunks,{type:'audio/webm'}); lastAudioUrl=URL.createObjectURL(blob); $('playback').src=lastAudioUrl; $('playback').style.display='block'; $('sendRec').disabled=false; $('resetRec').disabled=false; stream.getTracks().forEach(t=>t.stop())}; mediaRecorder.start(); $('startRec').disabled=true; $('stopRec').disabled=false; $('recState').textContent='جاري التسجيل'; sec=0; int=setInterval(()=>{sec++; $('timer').textContent='00:'+String(sec).padStart(2,'0'); $('meter').style.width=(sec%10)*10+'%'},1000)}catch(e){alert('لم يسمح المتصفح باستخدام الميكروفون')}};
+$('stopRec').onclick=()=>{mediaRecorder?.stop();clearInterval(int);$('startRec').disabled=false;$('stopRec').disabled=true;$('recState').textContent='تم التسجيل'}; $('resetRec').onclick=()=>{lastAudioUrl='';$('playback').style.display='none';$('sendRec').disabled=true;$('resetRec').disabled=true;$('recState').textContent='جاهز للتسجيل'}; $('sendRec').onclick=()=>{state.records+=1; state.done.record=true; state.stars+=3; $('recState').textContent='تم الإرسال للمعلمة'; save(); alert('تم إرسال التسجيل للمعلمة بنجاح')};
+function playLast(){ if(lastAudioUrl){let a=new Audio(lastAudioUrl); a.play()} else alert('لا يوجد تسجيل فعلي بعد. سجّلي من صفحة التسميع أولًا.');}
+function approve(name){state.stars+=2; state.gifts+=1; save(); alert('تم اعتماد تسميع '+name+' وإرسال التعزيز')}
+function makeCert(){let name=$('studentName').value||'اسم الطفل'; $('certStudent').textContent=name; $('certCenter').textContent=$('centerName').value||'المركز'; $('certNo').textContent='IQ-'+Date.now().toString().slice(-6); state.certs+=1; save(); showTab('printCert')}
+
+
+const certCandidatesData=[
+ {name:'سارة', cls:'روضة أ', progress:100, status:'مستحقة'},
+ {name:'عبدالله', cls:'روضة أ', progress:94, status:'بانتظار اعتماد المشرفة'},
+ {name:'آمنة', cls:'روضة ب', progress:91, status:'مستحقة'},
+ {name:'يوسف', cls:'تمهيدي', progress:82, status:'قيد المراجعة'}
+];
+state.certArchive = state.certArchive || [];
+function renderCertificates(){
+ if(!$('certCandidates')) return;
+ $('certCandidates').innerHTML=certCandidatesData.map(c=>`<tr><td><b>${c.name}</b></td><td>${c.cls}</td><td><span class="badge">${c.progress}%</span></td><td><span class="badge ${c.status.includes('انتظار')?'gold':''}">${c.status}</span></td><td><button class="miniBtn" onclick="fillCandidate('${c.name}','${c.cls}')">اختيار</button></td></tr>`).join('');
+ $('certIssued').textContent=state.certArchive.length;
+ $('certArchiveCount').textContent=state.certArchive.length;
+ $('certArchiveList').innerHTML=state.certArchive.length?state.certArchive.map(c=>`<div class="item"><span><b>${c.name}</b><br><small class="muted">${c.center} - ${c.no}</small></span><span><button class="miniBtn" onclick="openArchivedCert('${c.no}')">عرض</button> <button class="miniBtn gold" onclick="window.print()">طباعة</button></span></div>`).join(''):'<div class="item"><span class="muted">لم يتم إصدار شهادات بعد.</span></div>';
+}
+function fillCandidate(name,cls){$('studentName').value=name;$('certClass').value=cls;showTab('certificate')}
+function approveCertificate(){
+ $('certConditions').innerHTML=`<div class="item"><span>إكمال سورة العلق</span><span class="badge">مكتمل</span></div><div class="item"><span>إكمال الحروف المطلوبة</span><span class="badge">مكتمل</span></div><div class="item"><span>إنهاء الألعاب التعليمية</span><span class="badge">مكتمل</span></div><div class="item"><span>اعتماد المعلمة</span><span class="badge">مكتمل</span></div><div class="item"><span>اعتماد المشرفة</span><span class="badge">مكتمل</span></div>`;
+ $('certWaiting').textContent='0'; alert('تم اعتماد الشهادة من المشرفة.');
+}
+function celebrateBeforeCert(){showTab('certCelebrate'); $('celebrateStars').textContent=state.stars||45;}
+function makeCert(){
+ let name=$('studentName').value||'اسم الطفل'; let center=$('centerName').value||'المركز'; let grade=$('certGrade').value||'ممتاز'; let cls=$('certClass').value||'روضة أ'; let no='IQ-'+Date.now().toString().slice(-6);
+ $('certStudent').textContent=name; $('certCenter').textContent=center; $('certGradeOut').textContent=grade; $('certClassOut').textContent=cls; $('certNo').textContent=no;
+ const item={name,center,grade,cls,no,at:new Date().toLocaleString('ar-SA')};
+ if(!state.certArchive.some(x=>x.no===no)){ state.certArchive.unshift(item); state.certs=(state.certs||0)+1; save(); }
+ showTab('printCert');
+}
+function openArchivedCert(no){const c=state.certArchive.find(x=>x.no===no); if(!c)return; $('studentName').value=c.name; $('centerName').value=c.center; $('certGrade').value=c.grade; $('certClass').value=c.cls; $('certStudent').textContent=c.name; $('certCenter').textContent=c.center; $('certGradeOut').textContent=c.grade; $('certClassOut').textContent=c.cls; $('certNo').textContent=c.no; showTab('printCert');}
+
+const defaultStudents=[
+ {name:'سارة', cls:'روضة أ', progress:92, rec:true, stars:18},
+ {name:'عبدالله', cls:'روضة أ', progress:76, rec:true, stars:14},
+ {name:'مريم', cls:'روضة ب', progress:68, rec:false, stars:11},
+ {name:'يوسف', cls:'تمهيدي', progress:55, rec:false, stars:9}
+];
+state.students = state.students || defaultStudents;
+state.evaluations = state.evaluations || [];
+function addStudent(){
+ const name=$('newStudentName').value.trim(); const cls=$('newStudentClass').value;
+ if(!name){alert('اكتبي اسم الطفل أولًا');return}
+ state.students.push({name,cls,progress:0,rec:false,stars:0}); $('newStudentName').value=''; save(); alert('تمت إضافة الطفل');
+}
+function fillEvalSelect(){ if(!$('evalStudent'))return; $('evalStudent').innerHTML=state.students.map((s,i)=>`<option value="${i}">${s.name} - ${s.cls}</option>`).join(''); }
+function saveEvaluation(){
+ const i=+$('evalStudent').value; const s=state.students[i]; if(!s)return;
+ const grade=$('evalGrade').value, note=$('evalNote').value.trim()||'تم اعتماد التسميع، أحسنت.';
+ s.rec=false; s.progress=Math.min(100,s.progress+8); s.stars+=3; state.stars+=3; state.gifts+=1;
+ state.evaluations.unshift({name:s.name,cls:s.cls,grade,note,time:new Date().toLocaleString('ar-SA')}); $('evalNote').value=''; save(); alert('تم اعتماد التسميع وإرسال التعزيز');
+}
+function renderTeacherPanel(){
+ if(!$('teacherTable')) return;
+ $('teacherStudents').textContent=state.students.length;
+ fillEvalSelect();
+ $('teacherTable').innerHTML=state.students.map((s,i)=>`<tr><td><b>${s.name}</b></td><td>${s.cls}</td><td><span class="badge">${s.progress}%</span></td><td>${s.rec?'<span class="badge gold">جديد</span>':'<span class="badge">لا يوجد</span>'}</td><td><button class="miniBtn" onclick="playLast()">استماع</button> <button class="miniBtn gold" onclick="quickApprove(${i})">اعتماد</button></td></tr>`).join('');
+ $('teacherTimeline').innerHTML=(state.evaluations.length?state.evaluations:[{name:'لا توجد تقييمات بعد',cls:'',grade:'',note:'ستظهر هنا التقييمات بعد اعتماد التسميع.',time:''}]).slice(0,8).map(e=>`<div class="step"><b>${e.name}</b> <span class="badge gold">${e.grade}</span><p class="muted">${e.cls} ${e.time?'- '+e.time:''}</p><p style="margin-top:6px">${e.note}</p></div>`).join('');
+}
+function quickApprove(i){ const s=state.students[i]; if(!s)return; s.rec=false; s.progress=Math.min(100,s.progress+5); s.stars+=2; state.stars+=2; state.evaluations.unshift({name:s.name,cls:s.cls,grade:'ممتاز',note:'تم الاعتماد السريع ومنح تعزيز.',time:new Date().toLocaleString('ar-SA')}); save(); }
+
+function renderDashboard(){
+  renderTeacherPanel();
+  let doneCount=Object.values(state.done).filter(Boolean).length;
+  let pct=Math.min(100,Math.round(doneCount/5*100));
+  $('stars').textContent=state.stars; $('gifts').textContent=state.gifts; $('progressText').textContent=pct+'%'; $('mainBar').style.width=pct+'%';
+  $('teacherRec').textContent=state.records; $('teacherDone').textContent=pct+'%'; $('teacherStars').textContent=state.stars;
+  if($('supRecords')) $('supRecords').textContent=state.records;
+  if($('supProgress')) $('supProgress').textContent=pct+'%';
+  if($('supCerts')) $('supCerts').textContent=(pct>=80? '3 مستحقة':'0 مستحقة');
+  $('mgrRecords').textContent=state.records; $('mgrCerts').textContent=state.certs; $('mgrProgress').textContent=pct+'%';
+  renderTasks(); renderSupervisor(); renderCertificates();
+}
+const classData=[{name:'روضة أ', pct:92, children:18, rec:12, color:'greenDot'},{name:'روضة ب', pct:78, children:16, rec:9, color:'yellowDot'},{name:'تمهيدي', pct:69, children:14, rec:6, color:'redDot'}];
+const supStudents=[{name:'آمنة', cls:'روضة أ', pct:96, stars:42, badges:6, status:'ممتاز', note:'تسميع واضح ومتابعة يومية.'},{name:'ليان', cls:'روضة أ', pct:88, stars:37, badges:5, status:'جيد جدًا', note:'تحتاج مراجعة يسيرة للآيات الأخيرة.'},{name:'سارة', cls:'روضة ب', pct:74, stars:25, badges:3, status:'بانتظار تقييم', note:'يوجد تسجيل جديد لم تعتمد المعلمة نتيجته.'},{name:'جود', cls:'تمهيدي', pct:58, stars:16, badges:2, status:'يحتاج متابعة', note:'لم ترسل تسميعًا منذ يومين.'}];
+function renderSupervisor(){
+  if(!$('supervisorClasses')) return;
+  $('supervisorAlerts').innerHTML=['<div class="item"><span><span class="statusDot redDot"></span>تسجيلات تنتظر الاعتماد</span><span class="badge red">4</span></div>','<div class="item"><span><span class="statusDot yellowDot"></span>أطفال لم يسجلوا منذ يومين</span><span class="badge gold">3</span></div>','<div class="item"><span><span class="statusDot greenDot"></span>أطفال مستحقون للتكريم</span><span class="badge">5</span></div>'].join('');
+  $('supervisorClasses').innerHTML=classData.map(c=>`<div class="item" onclick="selectClass('${c.name}')" style="cursor:pointer"><span><span class="statusDot ${c.color}"></span><b>${c.name}</b><br><small class="muted">${c.children} طفل | ${c.rec} تسجيل اليوم</small><div class="miniProgress"><span style="width:${c.pct}%"></span></div></span><span class="badge">${c.pct}%</span></div>`).join('');
+  selectClass(window.selectedClass||'روضة أ', true);
+}
+function selectClass(cls, silent=false){
+  window.selectedClass=cls; if(!$('supervisorStudents')) return; const rows=supStudents.filter(s=>s.cls===cls);
+  $('supervisorStudents').innerHTML=rows.map(st=>`<div class="item" onclick="selectStudent('${st.name}')" style="cursor:pointer"><span><b>${st.name}</b><br><small class="muted">${st.status}</small><div class="miniProgress"><span style="width:${st.pct}%"></span></div></span><span><span class="badge">${st.pct}%</span><br><small class="muted">⭐ ${st.stars} | 🏅 ${st.badges}</small></span></div>`).join('') || '<div class="item"><span class="muted">لا توجد بيانات لهذا الفصل.</span></div>';
+  if(!silent && rows[0]) selectStudent(rows[0].name);
+}
+function selectStudent(name){
+  const st=supStudents.find(x=>x.name===name); if(!st) return;
+  $('studentProfile').innerHTML=`<div class="item"><span><span class="profileTitle">${st.name}</span><br><small class="muted">${st.cls}</small></span><span class="badge">${st.pct}%</span></div><div class="item"><span>📖 السورة الحالية<br><small class="muted">سورة العلق - حسب التوزيع</small></span><span class="badge gold">نشط</span></div><div class="item"><span>🎤 آخر تسجيل<br><small class="muted">اليوم - مدة 00:24</small></span><button class="miniBtn" onclick="playLast()">استماع</button></div><div class="item"><span>👩‍🏫 تقييم المعلمة<br><small class="muted">${st.note}</small></span><span class="badge">${st.status}</span></div><div class="item"><span>⭐ النجوم والأوسمة</span><span>${st.stars} نجمة | ${st.badges} أوسمة</span></div><div class="item"><span>📈 تطور الطفل</span><div class="miniProgress" style="width:150px"><span style="width:${st.pct}%"></span></div></div>`;
+}
+function downloadSupervisorReport(){const text='تقرير لوحة المشرفة - منصة اقرأ وتعلّم\nالأطفال: 48\nتسجيلات اليوم: '+state.records+'\nالإنجاز العام: '+($('supProgress')?$('supProgress').textContent:'0%')+'\nالفصول: روضة أ، روضة ب، تمهيدي'; const blob=new Blob([text],{type:'text/plain;charset=utf-8'}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='تقرير_المشرفة_اقرأ_وتعلم.txt'; a.click();}
+renderDashboard();
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+
+function managerReport(){
+  alert('تم تجهيز تقرير المركز: إجمالي الأطفال، التسميعات، نسب الإنجاز، الشهادات، وأداء الفصول.');
+}
+</script>
+</body></html>
