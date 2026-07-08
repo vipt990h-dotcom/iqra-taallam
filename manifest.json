@@ -1,7 +1,6 @@
 {
   "name": "منصة اقرأ وتعلّم V3 الذهبية",
   "short_name": "اقرأ وتعلّم",
-  "description": "مرحلة الإطلاق النهائي لمنصة اقرأ وتعلّم V3",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#F8F0DE",
@@ -10,7 +9,7 @@
   "lang": "ar",
   "icons": [
     {
-      "src": "assets/icons/icon.svg",
+      "src": "icon.svg",
       "sizes": "512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
