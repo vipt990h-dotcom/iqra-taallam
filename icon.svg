@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#102B4E"/><stop offset="1" stop-color="#06192F"/></linearGradient>
+<linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F8D883"/><stop offset="1" stop-color="#C8952D"/></linearGradient>
+</defs>
+<rect width="512" height="512" rx="112" fill="url(#bg)"/>
+<circle cx="256" cy="256" r="210" fill="none" stroke="#F8D883" stroke-width="10" opacity=".35"/>
+<path d="M256 62l34 68 75 11-54 53 13 75-68-36-68 36 13-75-54-53 75-11z" fill="url(#gold)"/>
+<path d="M140 305c45-30 85-27 116 8 31-35 71-38 116-8v88c-45-23-85-21-116 6-31-27-71-29-116-6z" fill="#FFF8E8"/>
+<path d="M256 312v88" stroke="#C8952D" stroke-width="10" stroke-linecap="round"/>
+<path d="M177 332c24-12 46-10 64 5M271 337c18-15 40-17 64-5" stroke="#102B4E" stroke-width="9" fill="none" stroke-linecap="round"/>
+<text x="256" y="468" text-anchor="middle" font-family="Arial,Tahoma" font-size="42" font-weight="700" fill="#F8D883">اقرأ</text>
+</svg>
