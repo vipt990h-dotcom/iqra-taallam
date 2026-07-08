@@ -1,0 +1,16 @@
+{
+  "release": "Iqra & Taallam V3 Gold - Institutional Phase 6",
+  "purpose": "Deployment, QA, documentation, settings, backup readiness",
+  "required_before_public_launch": [
+    "Add real Firebase config",
+    "Create user accounts",
+    "Test microphone on mobile",
+    "Verify GitHub Pages routing",
+    "Replace sample data with real children/classes"
+  ],
+  "credits": {
+    "rights": "جميع الحقوق محفوظة © جمعية الفرقان",
+    "idea_design": "أ. تهاني القرشي",
+    "supervision": "أ. غاليه الغامدي"
+  }
+}

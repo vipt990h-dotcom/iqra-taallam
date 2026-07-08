@@ -1,10 +1,37 @@
-const $=s=>document.querySelector(s);const $$=s=>document.querySelectorAll(s);
-function showRole(role){localStorage.setItem('iqraRole',role);location.href=role+'.html'}
-function demoLogin(){const role=$('#role')?.value||'parent';showRole(role)}
-let recorder, chunks=[];
-async function startRec(){try{const stream=await navigator.mediaDevices.getUserMedia({audio:true});recorder=new MediaRecorder(stream);chunks=[];recorder.ondataavailable=e=>chunks.push(e.data);recorder.onstop=()=>{const blob=new Blob(chunks,{type:'audio/webm'});const url=URL.createObjectURL(blob);$('#audioPreview').src=url;$('#audioPreview').style.display='block';$('#recStatus').textContent='تم حفظ التسجيل التجريبي ويمكن إرساله للمعلمة';localStorage.setItem('lastRecitation','سورة العلق - تسجيل تجريبي');};recorder.start();$('#recStatus').textContent='جاري التسجيل...';}catch(e){$('#recStatus').textContent='لم يسمح المتصفح باستخدام الميكروفون';}}
-function stopRec(){if(recorder&&recorder.state==='recording')recorder.stop()}
-function saveTeacherEval(){localStorage.setItem('teacherEval',$('#eval').value+' - '+$('#note').value);alert('تم حفظ تقييم المعلمة تجريبيًا')}
-function loadParent(){const ev=localStorage.getItem('teacherEval')||'بانتظار تقييم المعلمة';const box=$('#teacherEval');if(box)box.textContent=ev}
-function addPoints(n){let p=+(localStorage.getItem('points')||2450)+n;localStorage.setItem('points',p);const el=$('#points');if(el)el.textContent=p+' نقطة';alert('أحسنتِ! تم إضافة '+n+' نقطة')}
-document.addEventListener('DOMContentLoaded',()=>{loadParent();const p=$('#points');if(p)p.textContent=(localStorage.getItem('points')||2450)+' نقطة';});
+
+setTimeout(()=>document.querySelector('.splash')?.classList.add('hide'),1000);
+
+function runChecklist(){
+  document.querySelectorAll('.toggle').forEach((t,i)=>{
+    setTimeout(()=>t.classList.add('on'), i*120);
+  });
+  const msg = document.getElementById('qaMsg');
+  if(msg) msg.innerHTML = 'تم فحص عناصر الإطلاق تجريبيًا: الواجهة، الصفحات، الأيقونة، PWA، الحقوق، ومسارات الملفات.';
+}
+
+function downloadBackup(){
+  const backup = {
+    project: 'Iqra Taallam V3 Gold',
+    phase: 'Institutional Phase 6',
+    date: new Date().toISOString(),
+    rights: 'جمعية الفرقان',
+    idea_design: 'أ. تهاني القرشي',
+    supervision: 'أ. غاليه الغامدي',
+    status: 'ready for deployment review'
+  };
+  const blob = new Blob([JSON.stringify(backup,null,2)], {type:'application/json;charset=utf-8'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'iqra-v3-backup-sample.json'; a.click();
+  URL.revokeObjectURL(url);
+}
+
+function copyDeploySteps(){
+  const text = '1) فك الضغط. 2) رفع محتويات المجلد إلى GitHub. 3) التأكد من وجود index.html في الجذر. 4) تفعيل Pages من Settings > Pages.';
+  navigator.clipboard?.writeText(text);
+  alert('تم نسخ خطوات النشر المختصرة.');
+}
+
+if('serviceWorker' in navigator){
+  window.addEventListener('load',()=>navigator.serviceWorker.register('./service-worker.js').catch(()=>{}));
+}

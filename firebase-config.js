@@ -1,9 +1,3 @@
-// ضع إعدادات Firebase هنا بعد إنشاء المشروع الحقيقي
-export const firebaseConfig = {
-  apiKey: "PASTE_API_KEY",
-  authDomain: "PASTE_PROJECT.firebaseapp.com",
-  projectId: "PASTE_PROJECT_ID",
-  storageBucket: "PASTE_PROJECT.appspot.com",
-  messagingSenderId: "PASTE_SENDER_ID",
-  appId: "PASTE_APP_ID"
-};
+// إعدادات Firebase توضع هنا قبل الإطلاق العام.
+// لا تضعي مفاتيح حساسة في مستودع عام إلا حسب إعدادات Firebase المسموحة للويب.
+// const firebaseConfig = { ... };
