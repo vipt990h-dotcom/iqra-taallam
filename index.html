@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#0b6b78">
+  <meta name="description" content="منصة اقرأ وتعلّم الصيفية للأطفال">
+  <title>اقرأ وتعلّم</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/app.css">
+</head>
+<body>
+<div class="app-shell">
+  <header class="topbar">
+    <button class="brand" type="button" data-go="home" aria-label="الرئيسية">
+      <span class="brand-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64"><path d="M10 16c10-4 18-2 22 2v34c-6-5-14-7-22-4V16Zm44 0c-10-4-18-2-22 2v34c6-5 14-7 22-4V16Z"/><path d="M32 18v34"/></svg>
+      </span>
+      <span><strong>اقرأ وتعلّم</strong><small>رحلة الطفل الأولى مع القرآن</small></span>
+    </button>
+    <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
+    <nav class="role-nav" id="roleNav">
+      <button class="active" data-go="home">الطفل</button>
+      <button data-go="teacher">المعلمة</button>
+      <button data-go="supervisor">المشرفة</button>
+      <button data-go="manager">المديرة</button>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page active" id="home">
+      <div class="hero-grid">
+        <article class="card hero-card">
+          <span class="eyebrow">منصة صيفية تفاعلية</span>
+          <h1>خطوات صغيرة… وأثر كبير مع كتاب الله</h1>
+          <p>استماع، تسميع صوتي، حروف، ألعاب، مكافآت ومتابعة تعليمية في تجربة واحدة.</p>
+          <div class="progress-box">
+            <div class="progress-head"><b>تقدمي اليوم</b><span id="progressText">42%</span></div>
+            <div class="progress"><span id="mainProgress"></span></div>
+            <div class="quick-stats"><span>⭐ <b id="starsCount">8</b> نجوم</span><span>🏆 <b id="badgesCount">2</b> مكافآت</span></div>
+          </div>
+          <div class="actions">
+            <button class="btn primary" data-go="quran">ابدأ الرحلة</button>
+            <button class="btn soft" data-go="record">التسميع الصوتي</button>
+          </div>
+        </article>
+
+        <article class="card today-card">
+          <h2>مهام اليوم</h2>
+          <div class="task"><span class="task-icon">١</span><div><b>استمع للآيات 1–2</b><small>بصوت الشيخ محمود خليل الحصري</small></div><span class="status ready">جاهز</span></div>
+          <div class="task"><span class="task-icon">٢</span><div><b>سجّل قراءتك</b><small>ثم استمع إليها قبل الإرسال</small></div><span class="status">بانتظارك</span></div>
+          <div class="task"><span class="task-icon">٣</span><div><b>تعلّم الحروف</b><small>ا، أ، ب</small></div><span class="status">حروف</span></div>
+          <div class="task"><span class="task-icon">٤</span><div><b>العب واكسب</b><small>لعبة الحرف الصحيح</small></div><span class="status">+10</span></div>
+        </article>
+      </div>
+
+      <div class="feature-grid">
+        <button class="feature quran" data-go="quran"><span class="feature-icon">۞</span><b>سورة العلق</b><small>التوزيع اليومي المعتمد</small></button>
+        <button class="feature record" data-go="record"><span class="feature-icon">◉</span><b>التسميع الصوتي</b><small>تسجيل وإرسال للمعلمة</small></button>
+        <button class="feature letters" data-go="letters"><span class="feature-icon">أ ب</span><b>الحروف</b><small>اسم الحرف وصوته</small></button>
+        <button class="feature games" data-go="games"><span class="feature-icon">✦</span><b>الألعاب التعليمية</b><small>تعلم من خلال اللعب</small></button>
+        <button class="feature rewards" id="rewardBtn"><span class="feature-icon">★</span><b>صندوق المكافآت</b><small>افتح جائزتك</small></button>
+        <button class="feature achievements" data-go="achievements"><span class="feature-icon">✓</span><b>إنجازاتي</b><small>تقدمي وأوسمتي</small></button>
+      </div>
+    </section>
+
+    <section class="page" id="quran">
+      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">مسار القرآن</span><h1>سورة العلق</h1></div></div>
+      <div class="content-grid">
+        <article class="card">
+          <div class="day-selector">
+            <label for="daySelect">اختر اليوم</label>
+            <select id="daySelect"></select>
+          </div>
+          <div class="verse-card" id="verseText"></div>
+          <div class="reciter">
+            <span class="reciter-badge">صوت القارئ</span>
+            <div><b>الشيخ محمود خليل الحصري</b><small>تلاوة مرتلة تعليمية</small></div>
+          </div>
+          <audio id="husaryPlayer" controls preload="none"></audio>
+          <div class="audio-actions">
+            <button class="btn primary" id="playVerses">تشغيل الآيات</button>
+            <button class="btn soft" id="repeatThree">تكرار 3 مرات</button>
+            <button class="btn soft" data-go="record">سجّل قراءتي</button>
+          </div>
+          <p class="note">يحتاج تشغيل التلاوة إلى اتصال بالإنترنت في نسخة الاختبار. يمكن لاحقًا إضافة الملفات الصوتية داخل المشروع للعمل دون إنترنت.</p>
+        </article>
+
+        <article class="card">
+          <h2>خطة الحفظ</h2>
+          <div class="plan-list" id="planList"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="page" id="record">
+      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التسميع</span><h1>سجّل قراءتك</h1></div></div>
+      <article class="card recorder-card">
+        <div class="record-status"><span class="record-dot" id="recordDot"></span><b id="recordState">جاهز للتسجيل</b><time id="recordTimer">00:00</time></div>
+        <div class="wave" id="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="audio-actions">
+          <button class="btn primary" id="startRecord">ابدأ التسجيل</button>
+          <button class="btn danger" id="stopRecord" disabled>إيقاف</button>
+          <button class="btn soft" id="deleteRecord" disabled>إعادة التسجيل</button>
+          <button class="btn gold" id="sendRecord" disabled>إرسال للمعلمة</button>
+        </div>
+        <audio id="recordPlayback" controls hidden></audio>
+        <div class="message" id="recordMessage"></div>
+        <p class="note">التسجيل يعمل فقط عند فتح المنصة عبر HTTPS مثل GitHub Pages أو Firebase Hosting، أو عبر localhost.</p>
+      </article>
+    </section>
+
+    <section class="page" id="letters">
+      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التبيان</span><h1>عالم الحروف</h1></div></div>
+      <article class="card">
+        <p class="lead">اضغط على الحرف لسماع اسمه، ثم جرّب التمرين.</p>
+        <div class="letters-grid" id="lettersGrid"></div>
+      </article>
+    </section>
+
+    <section class="page" id="games">
+      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">تعلم والعب</span><h1>لعبة الحرف الصحيح</h1></div></div>
+      <article class="card game-card">
+        <div class="scorebar"><span>النقاط: <b id="score">0</b></span><span>المحاولات: <b id="tries">0</b></span></div>
+        <h2 id="gameQuestion">اختر الحرف الصحيح</h2>
+        <div class="game-options" id="gameOptions"></div>
+        <div class="game-feedback" id="gameFeedback"></div>
+        <button class="btn primary" id="newRound">جولة جديدة</button>
+      </article>
+    </section>
+
+    <section class="page" id="achievements">
+      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التقدم</span><h1>إنجازاتي</h1></div></div>
+      <div class="stats-grid">
+        <article class="metric"><b id="metricStars">8</b><span>نجوم</span></article>
+        <article class="metric"><b>42%</b><span>نسبة الإنجاز</span></article>
+        <article class="metric"><b>3</b><span>أيام مكتملة</span></article>
+        <article class="metric"><b>2</b><span>أوسمة</span></article>
+      </div>
+      <article class="card">
+        <h2>أوسمتي</h2>
+        <div class="badges">
+          <div class="badge-card earned"><span>★</span><b>القارئ المجتهد</b></div>
+          <div class="badge-card earned"><span>أ</span><b>إتقان الحروف</b></div>
+          <div class="badge-card locked"><span>✓</span><b>المواظبة</b></div>
+          <div class="badge-card locked"><span>۞</span><b>إتمام السورة</b></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="page" id="teacher">
+      <div class="page-heading"><div><span class="eyebrow">لوحة المعلمة</span><h1>متابعة الأطفال</h1></div></div>
+      <div class="stats-grid">
+        <article class="metric"><b>18</b><span>طفلًا</span></article>
+        <article class="metric"><b id="newRecords">1</b><span>تسجيل جديد</span></article>
+        <article class="metric"><b>76%</b><span>الإنجاز</span></article>
+        <article class="metric"><b>42</b><span>نجوم اليوم</span></article>
+      </div>
+      <article class="card">
+        <div class="table-title"><h2>التسميعات الأخيرة</h2><span class="status ready">تجريبي</span></div>
+        <div class="student-list" id="teacherStudents"></div>
+      </article>
+    </section>
+
+    <section class="page" id="supervisor">
+      <div class="page-heading"><div><span class="eyebrow">لوحة المشرفة</span><h1>مؤشرات الأداء</h1></div></div>
+      <div class="stats-grid">
+        <article class="metric"><b>90%</b><span>الحضور</span></article>
+        <article class="metric"><b>71%</b><span>إتمام السورة</span></article>
+        <article class="metric"><b>84%</b><span>إتقان الحروف</span></article>
+        <article class="metric"><b>12</b><span>تسجيلات اليوم</span></article>
+      </div>
+      <div class="content-grid">
+        <article class="card">
+          <h2>الأداء حسب الفصل</h2>
+          <div class="performance-row"><span>الروضة أ</span><div><i style="width:92%"></i></div><b>92%</b></div>
+          <div class="performance-row"><span>الروضة ب</span><div><i style="width:78%"></i></div><b>78%</b></div>
+          <div class="performance-row"><span>التمهيدي</span><div><i style="width:69%"></i></div><b>69%</b></div>
+        </article>
+        <article class="card">
+          <h2>يحتاج إلى متابعتي اليوم</h2>
+          <div class="alert-item yellow"><b>3 أطفال</b><span>لم يرسلوا تسميعًا منذ يومين</span></div>
+          <div class="alert-item red"><b>5 تسجيلات</b><span>بانتظار تقييم المعلمة</span></div>
+          <div class="alert-item green"><b>طفلان</b><span>استحقا شهادة الإتمام</span></div>
+        </article>
+      </div>
+      <article class="card">
+        <h2>سماع قراءات الأطفال</h2>
+        <p class="note">ستظهر التسجيلات الحقيقية هنا بعد ربط Firebase Storage. في نسخة الاختبار تظهر عينات محلية فقط.</p>
+        <div class="student-list" id="supervisorStudents"></div>
+      </article>
+    </section>
+
+    <section class="page" id="manager">
+      <div class="page-heading"><div><span class="eyebrow">لوحة المديرة</span><h1>نظرة شاملة</h1></div></div>
+      <div class="stats-grid">
+        <article class="metric"><b>45</b><span>الأطفال</span></article>
+        <article class="metric"><b>128</b><span>التسجيلات</span></article>
+        <article class="metric"><b>36</b><span>شهادة مستحقة</span></article>
+        <article class="metric"><b>88%</b><span>الإنجاز العام</span></article>
+      </div>
+      <div class="content-grid">
+        <article class="card"><h2>مؤشرات مباشرة</h2>
+          <div class="manager-line"><span>أكثر فصل نشاطًا</span><b>الروضة أ</b></div>
+          <div class="manager-line"><span>أكثر المعلمات تفاعلًا</span><b>المعلمة الأولى</b></div>
+          <div class="manager-line"><span>التسميعات المعتمدة اليوم</span><b>31</b></div>
+        </article>
+        <article class="card"><h2>الشهادات</h2>
+          <p class="lead">النظام الكامل للشهادات يُفعّل بعد ربط قاعدة البيانات واعتماد بيانات الأطفال.</p>
+          <button class="btn primary" id="previewCertificate">معاينة شهادة تجريبية</button>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div><b>المحتوى التعليمي</b><span>جمعية فرقان لتحفيظ القرآن بالطائف</span></div>
+    <div><b>فكرة وتصميم وإخراج</b><span class="nowrap">أ. تهاني القرشي</span></div>
+    <div><b>إشراف</b><span class="nowrap">أ. غالية الغامدي</span></div>
+  </footer>
+</div>
+
+<div class="modal" id="rewardModal" aria-hidden="true">
+  <div class="modal-card">
+    <button class="modal-close" data-close>×</button>
+    <div class="reward-symbol">★</div>
+    <h2>مبارك!</h2>
+    <p id="rewardText">حصلت على وسام القارئ المجتهد</p>
+    <button class="btn primary" data-close>رائع</button>
+  </div>
+</div>
+
+<div class="modal" id="certificateModal" aria-hidden="true">
+  <div class="certificate">
+    <button class="modal-close" data-close>×</button>
+    <div class="cert-logo">اقرأ وتعلّم</div>
+    <h2>شهادة شكر وتقدير</h2>
+    <p>تُمنح للطفل/ـة</p>
+    <h3>اسم الطفل</h3>
+    <p>لإتمام رحلة اقرأ وتعلّم الصيفية بنجاح</p>
+    <div class="cert-signatures"><span>المعلمة</span><span>المشرفة</span><span>المديرة</span></div>
+    <button class="btn primary" onclick="window.print()">طباعة</button>
+  </div>
+</div>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
