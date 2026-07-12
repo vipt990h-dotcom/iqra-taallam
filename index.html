@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>اقرأ وتعلّم | Enterprise V1.3 Day 3</title>
+<title>اقرأ وتعلّم | Enterprise V1.3 Letter Studio Fix</title>
 <meta name="theme-color" content="#0b6b78" />
 <link rel="manifest" href="manifest.json">
 <style>
@@ -122,7 +122,7 @@
           <button class="btn gold" onclick="checkTrace()">تحقّق واعتمد الحرف</button>
           <button class="btn" onclick="nextLetter()">الحرف التالي ←</button>
         </div>
-        <p id="traceMsg" class="trace-msg"></p>
+        <p id="traceMsg" class="trace-msg">اختر حرفًا، ثم اكتب فوق الحرف المنقّط.</p>
       </div>
     </div>
   </div>
@@ -252,7 +252,19 @@ function encourage(text,kind='success'){showGuide(text);if(kind==='success')succ
 renderProgress();renderSoundToggle();setTimeout(()=>showGuide('أهلًا بك في رحلة اقرأ وتعلّم. هيا نضيء أولى المحطات!'),700);
 
 const sections=[...document.querySelectorAll('.section')]; const tabBtns=[...document.querySelectorAll('.tabs button')];
-function showTab(id){sections.forEach(s=>s.classList.remove('active')); document.getElementById(id)?.classList.add('active'); tabBtns.forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); window.scrollTo({top:0,behavior:'smooth'});} tabBtns.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+function showTab(id){
+  sections.forEach(s=>s.classList.remove('active'));
+  document.getElementById(id)?.classList.add('active');
+  tabBtns.forEach(b=>b.classList.toggle('active',b.dataset.tab===id));
+  if(id==='letters'){
+    requestAnimationFrame(()=>requestAnimationFrame(()=>{
+      fitTraceCanvas();
+      selectLetter(selectedLetterIndex,false);
+    }));
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+tabBtns.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
 const plan=['آية 1–2','آية 3','آية 4–5','آية 6','آية 7–8','آية 9 + مراجعة','آية 10','آية 11–12','آية 13 + مراجعة','آية 14','آية 15','آية 16 + مراجعة','آية 17','آية 18','آية 19 + مراجعة'];
 document.getElementById('ayahPlan').innerHTML=plan.map((p,i)=>`<div class="item"><span>اليوم ${i+1}: ${p}</span><span class="badge">${i<3?'مفتوح':'قريبًا'}</span></div>`).join('');
 const letterData=[
@@ -267,24 +279,82 @@ let masteredLetters=new Set(JSON.parse(localStorage.getItem('iqraMasteredLetters
 function getLetterName(ch){return (letterData.find(x=>x[0]===ch)||[ch,ch])[1]}
 function speakText(txt){if(!soundEnabled)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.62;u.pitch=1;u.volume=1;speechSynthesis.speak(u)}catch(e){}}
 function say(txt){speakText(txt)}
-function renderStageNav(){letterStageNav.innerHTML=letterStages.map((s,i)=>`<button class="stage-btn ${i===currentStage?'active':''}" onclick="setLetterStage(${i})">المرحلة ${i+1}</button>`).join('')}
+function renderStageNav(){const el=document.getElementById('letterStageNav');if(!el)return;el.innerHTML=letterStages.map((s,i)=>`<button class="stage-btn ${i===currentStage?'active':''}" onclick="setLetterStage(${i})">المرحلة ${i+1}</button>`).join('')}
 function setLetterStage(i){currentStage=i;const [a,b]=letterStages[i];if(selectedLetterIndex<a||selectedLetterIndex>=b)selectedLetterIndex=a;renderStageNav();renderLetterList();selectLetter(selectedLetterIndex,false)}
-function renderLetterList(){const [a,b]=letterStages[currentStage];letterList.innerHTML=letterData.slice(a,b).map((x,j)=>{const i=a+j,state=masteredLetters.has(x[0])?'mastered':(i===selectedLetterIndex?'learning':'');return `<button class="letter ${i===selectedLetterIndex?'active':''} ${state}" onclick="selectLetter(${i})" aria-label="${x[1]}">${x[0]}</button>`}).join('');lettersMasteredText.textContent=masteredLetters.size+' من 28 حرفًا متقنًا'}
-function selectLetter(i,autoPlay=true){selectedLetterIndex=i;const st=letterStages.findIndex(([a,b])=>i>=a&&i<b);if(st!==currentStage){currentStage=st;renderStageNav()}renderLetterList();const [ch,name]=letterData[i];selectedLetterName.textContent=name;videoLetterLabel.textContent='النطق المرجعي: '+name;letterStateBadge.textContent=masteredLetters.has(ch)?'متقن':'قيد التعلم';drawTraceGuide();clearFreeWriting();if(autoPlay)speakSelectedLetter()}
-function playSelectedVideoSegment(){const [ch,name]=letterData[selectedLetterIndex],seg=videoSegments[ch];clearTimeout(videoStopTimer);if(!seg){videoSourceNote.textContent='الفيديو المرفق يتضمن الحروف حتى الشين؛ سيُستخدم النطق العربي المدمج لهذا الحرف.';speakText(name);return}videoSourceNote.textContent='تشغيل النطق الصحيح من الفيديو التعليمي المرفق.';lettersVideo.currentTime=seg[0];lettersVideo.play().then(()=>{videoStopTimer=setTimeout(()=>lettersVideo.pause(),Math.max(500,(seg[1]-seg[0])*1000))}).catch(()=>{});lettersVideo.ontimeupdate=()=>{if(lettersVideo.currentTime>=seg[1]){lettersVideo.pause();lettersVideo.ontimeupdate=null}}}
+function renderLetterList(){
+  const listEl=document.getElementById('letterList'), masteredEl=document.getElementById('lettersMasteredText');
+  if(!listEl)return;
+  const [a,b]=letterStages[currentStage];
+  listEl.innerHTML=letterData.slice(a,b).map((x,j)=>{const i=a+j,state=masteredLetters.has(x[0])?'mastered':(i===selectedLetterIndex?'learning':'');return `<button class="letter ${i===selectedLetterIndex?'active':''} ${state}" onclick="selectLetter(${i})" aria-label="${x[1]}">${x[0]}</button>`}).join('');
+  if(masteredEl)masteredEl.textContent=masteredLetters.size+' من 28 حرفًا متقنًا';
+}
+function selectLetter(i,autoPlay=true){
+  selectedLetterIndex=Math.max(0,Math.min(letterData.length-1,Number(i)||0));
+  const st=letterStages.findIndex(([a,b])=>selectedLetterIndex>=a&&selectedLetterIndex<b);
+  if(st!==currentStage){currentStage=st;renderStageNav()}
+  renderLetterList();
+  const [ch,name]=letterData[selectedLetterIndex];
+  const nameEl=document.getElementById('selectedLetterName'), labelEl=document.getElementById('videoLetterLabel'), badgeEl=document.getElementById('letterStateBadge');
+  if(nameEl)nameEl.textContent=name;
+  if(labelEl)labelEl.textContent='النطق المرجعي: '+name;
+  if(badgeEl)badgeEl.textContent=masteredLetters.has(ch)?'متقن':'قيد التعلم';
+  if(document.getElementById('letters')?.classList.contains('active')){
+    fitTraceCanvas();
+  }else{
+    drawTraceGuide();clearFreeWriting();
+  }
+  if(autoPlay)speakSelectedLetter();
+}
+function playSelectedVideoSegment(){
+  const video=document.getElementById('lettersVideo'), note=document.getElementById('videoSourceNote');
+  const [ch,name]=letterData[selectedLetterIndex],seg=videoSegments[ch];
+  clearTimeout(videoStopTimer);
+  if(!video||!seg){if(note)note.textContent='سيُستخدم النطق العربي المدمج لهذا الحرف.';speakText(name);return}
+  if(note)note.textContent='تشغيل النطق الصحيح من الفيديو التعليمي المرفق.';
+  const start=()=>{try{video.currentTime=seg[0]}catch(_){};video.play().then(()=>{videoStopTimer=setTimeout(()=>video.pause(),Math.max(500,(seg[1]-seg[0])*1000))}).catch(()=>{if(note)note.textContent='اضغط تشغيل الفيديو مرة واحدة، ثم أعد اختيار الحرف.'})};
+  if(video.readyState<1){video.addEventListener('loadedmetadata',start,{once:true});video.load()}else start();
+  video.ontimeupdate=()=>{if(video.currentTime>=seg[1]){video.pause();video.ontimeupdate=null}}
+}
 function speakSelectedLetter(){playSelectedVideoSegment()}
 function nextLetter(){selectLetter((selectedLetterIndex+1)%letterData.length);clearTrace()}
 const traceCanvas=document.getElementById('traceCanvas'),tctx=traceCanvas.getContext('2d'),freeCanvas=document.getElementById('freeCanvas'),fctx=freeCanvas.getContext('2d');let drawing=false,tracePoints=0,freeDrawing=false,freePoints=0;
-function fitOneCanvas(canvas,ctx){const dpr=Math.max(1,window.devicePixelRatio||1),rect=canvas.getBoundingClientRect();canvas.width=Math.round(rect.width*dpr);canvas.height=Math.round(rect.width*.75*dpr);ctx.setTransform(dpr,0,0,dpr,0,0)}
+function fitOneCanvas(canvas,ctx){
+  if(!canvas||!ctx)return;
+  const dpr=Math.max(1,window.devicePixelRatio||1);
+  const rect=canvas.getBoundingClientRect();
+  const parentWidth=canvas.parentElement?.clientWidth||0;
+  const cssWidth=Math.max(280,Math.round(rect.width||parentWidth||560));
+  const cssHeight=Math.round(cssWidth*.75);
+  canvas.style.width=cssWidth+'px';
+  canvas.style.height=cssHeight+'px';
+  canvas.width=Math.round(cssWidth*dpr);
+  canvas.height=Math.round(cssHeight*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
 function fitTraceCanvas(){fitOneCanvas(traceCanvas,tctx);fitOneCanvas(freeCanvas,fctx);drawTraceGuide();clearFreeWriting()}
 function drawTraceGuide(){const w=traceCanvas.clientWidth||560,h=(traceCanvas.clientWidth||560)*.75;tctx.clearRect(0,0,w,h);tctx.save();tctx.textAlign='center';tctx.textBaseline='middle';tctx.font=`900 ${Math.min(w*.42,h*.55)}px Tahoma,Arial`;tctx.setLineDash([10,10]);tctx.lineWidth=4;tctx.strokeStyle='#aebfc0';const ch=letterData[selectedLetterIndex][0];tctx.strokeText(ch,w*.25,h*.5);tctx.strokeText(ch,w*.5,h*.5);tctx.strokeText(ch,w*.75,h*.5);tctx.fillStyle='rgba(11,107,120,.025)';tctx.fillText(ch,w*.25,h*.5);tctx.fillText(ch,w*.5,h*.5);tctx.fillText(ch,w*.75,h*.5);tctx.restore();tracePoints=0;traceMsg.textContent=''}
 function clearFreeWriting(){const w=freeCanvas.clientWidth||560,h=(freeCanvas.clientWidth||560)*.75;fctx.clearRect(0,0,w,h);fctx.save();fctx.setLineDash([5,8]);fctx.strokeStyle='#d8e4e4';fctx.lineWidth=2;fctx.beginPath();fctx.moveTo(20,h*.72);fctx.lineTo(w-20,h*.72);fctx.stroke();fctx.restore();freePoints=0}
 function pos(canvas,e){const r=canvas.getBoundingClientRect(),p=e.touches?e.touches[0]:e;return{x:p.clientX-r.left,y:p.clientY-r.top}}
-function bindDrawing(canvas,ctx,isFree){let active=false;const down=e=>{e.preventDefault();active=true;const p=pos(canvas,e);ctx.beginPath();ctx.moveTo(p.x,p.y)};const move=e=>{if(!active)return;e.preventDefault();const p=pos(canvas,e);ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=isFree?'#d8a437':'#0b6b78';ctx.lineWidth=isFree?14:16;ctx.lineTo(p.x,p.y);ctx.stroke();if(isFree)freePoints++;else tracePoints++};const up=()=>active=false;canvas.addEventListener('pointerdown',down);canvas.addEventListener('pointermove',move);window.addEventListener('pointerup',up);canvas.addEventListener('touchstart',down,{passive:false});canvas.addEventListener('touchmove',move,{passive:false});window.addEventListener('touchend',up)}
+function bindDrawing(canvas,ctx,isFree){
+  if(!canvas||!ctx)return;
+  let active=false;
+  const down=e=>{e.preventDefault();active=true;canvas.setPointerCapture?.(e.pointerId);const p=pos(canvas,e);ctx.beginPath();ctx.moveTo(p.x,p.y)};
+  const move=e=>{if(!active)return;e.preventDefault();const p=pos(canvas,e);ctx.lineCap='round';ctx.lineJoin='round';ctx.strokeStyle=isFree?'#d8a437':'#0b6b78';ctx.lineWidth=isFree?14:16;ctx.lineTo(p.x,p.y);ctx.stroke();if(isFree)freePoints++;else tracePoints++};
+  const up=e=>{active=false;try{canvas.releasePointerCapture?.(e.pointerId)}catch(_){}};
+  canvas.addEventListener('pointerdown',down,{passive:false});
+  canvas.addEventListener('pointermove',move,{passive:false});
+  canvas.addEventListener('pointerup',up);
+  canvas.addEventListener('pointercancel',up);
+  canvas.addEventListener('pointerleave',up);
+}
 bindDrawing(traceCanvas,tctx,false);bindDrawing(freeCanvas,fctx,true);
 function clearTrace(){drawTraceGuide()}
 function checkTrace(){const ch=letterData[selectedLetterIndex][0];if(tracePoints>25&&freePoints>12){masteredLetters.add(ch);localStorage.setItem('iqraMasteredLetters',JSON.stringify([...masteredLetters]));traceMsg.textContent='أحسنت! تتبعت الحرف وكتبته بنفسك ⭐';traceMsg.style.color='var(--green)';letterStateBadge.textContent='متقن';renderLetterList();setProgress(Math.min(64,45+Math.round(masteredLetters.size/28*19)),1,'أحسنت! أتقنت حرفًا جديدًا.');successSound();sparkles()}else if(tracePoints<=25){traceMsg.textContent='تتبّع الحروف المنقّطة كاملة أولًا.';traceMsg.style.color='#a56a00';gentleTrySound()}else{traceMsg.textContent='اكتب الحرف مرة واحدة في المساحة الحرة ثم أعد التحقق.';traceMsg.style.color='#a56a00';gentleTrySound()}}
-renderStageNav();renderLetterList();setTimeout(()=>{fitTraceCanvas();selectLetter(0,false)},100);window.addEventListener('resize',fitTraceCanvas);
+renderStageNav();
+renderLetterList();
+setTimeout(()=>{selectLetter(0,false)},100);
+let resizeTimer;
+window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(document.getElementById('letters')?.classList.contains('active'))fitTraceCanvas()},120)});
 
 let huntTarget='ب',huntTimer=null,huntSpawn=null,huntRemaining=30,huntScoreValue=0,huntRunning=false;
 function repeatGameSound(){const i=letters.indexOf(huntTarget);if(i>=0){const old=selectedLetterIndex;selectedLetterIndex=i;playSelectedVideoSegment();selectedLetterIndex=old}else speakText(getLetterName(huntTarget))}
