@@ -1,6 +1,6 @@
 {
-  "name": "اقرأ وتعلّم | Enterprise V1",
-  "short_name": "اقرأ وتعلّم",
+  "name": "اقرأ وتعلم Enterprise V1.3 - اليوم الثاني",
+  "short_name": "اقرأ وتعلم",
   "description": "منصة تعليمية مؤسسية للأطفال لتعلم القرآن والحروف ومتابعة الإنجاز والشهادات.",
   "start_url": "./index.html",
   "scope": "./",
@@ -10,7 +10,17 @@
   "lang": "ar",
   "dir": "rtl",
   "icons": [
-    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
-    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
   ]
 }
