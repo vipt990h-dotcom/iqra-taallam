@@ -93,18 +93,16 @@
 <section id="letters" class="section">
   <div class="card">
     <h2>🔤 استوديو الحروف</h2>
-    <p class="subtitle">استمع إلى النطق الصحيح من الفيديو المرفق، ثم تتبّع الحرف المنقّط واكتبه بنفسك.</p>
+    <p class="subtitle">استمع إلى النطق الصحيح لكل حرف، ثم تتبّع الحرف المنقّط واكتبه بنفسك.</p>
     <div class="letter-stage-nav" id="letterStageNav"></div>
     <div class="letter-learning-layout">
       <div>
         <div class="letters" id="letterList" style="margin-top:14px"></div>
         <div class="letter-status"><span class="badge" id="letterStateBadge">قيد التعلم</span><span class="muted" id="lettersMasteredText">0 من 28 حرفًا متقنًا</span></div>
         <div class="video-reference">
-          <video id="lettersVideo" preload="metadata" playsinline controls>
-            <source src="media/letters-correct-reading.mp4" type="video/mp4">
-          </video>
-          <div class="video-meta"><span class="video-chip" id="videoLetterLabel">النطق المرجعي: ألف</span><button class="btn gold" onclick="playSelectedVideoSegment()">▶ تشغيل نطق الحرف</button></div>
-          <p class="audio-source-note" id="videoSourceNote">يُشغَّل المقطع الخاص بالحرف من الفيديو التعليمي المرفق.</p>
+          <audio id="letterAudio" preload="auto" controls style="width:100%"></audio>
+          <div class="video-meta"><span class="video-chip" id="videoLetterLabel">النطق المرجعي: ألف</span><button class="btn gold" onclick="playSelectedLetterAudio()">▶ تشغيل نطق الحرف</button></div>
+          <p class="audio-source-note" id="videoSourceNote">يُشغَّل ملف صوتي مستقل وواضح لكل حرف.</p>
         </div>
       </div>
       <div class="trace-card">
@@ -271,10 +269,8 @@ const letterData=[
 ['ا','ألف'],['ب','باء'],['ت','تاء'],['ث','ثاء'],['ج','جيم'],['ح','حاء'],['خ','خاء'],['د','دال'],['ذ','ذال'],['ر','راء'],['ز','زاي'],['س','سين'],['ش','شين'],['ص','صاد'],['ض','ضاد'],['ط','طاء'],['ظ','ظاء'],['ع','عين'],['غ','غين'],['ف','فاء'],['ق','قاف'],['ك','كاف'],['ل','لام'],['م','ميم'],['ن','نون'],['هـ','هاء'],['و','واو'],['ي','ياء']];
 const letters=letterData.map(x=>x[0]);let selectedLetterIndex=0;
 const letterStages=[[0,5],[5,10],[10,15],[15,20],[20,28]];
-const videoSegments={
-'ا':[0.0,3.85],'ب':[3.85,7.7],'ت':[7.7,11.55],'ث':[11.55,15.4],'ج':[15.4,19.25],'ح':[19.25,23.1],'خ':[23.1,26.95],
-'د':[26.95,30.8],'ذ':[30.8,34.65],'ر':[34.65,38.5],'ز':[38.5,42.35],'س':[42.35,46.2],'ش':[46.2,50.9]};
-let currentStage=0,videoStopTimer=null;
+const letterAudioFiles=letterData.map((_,i)=>`media/letters-audio/${String(i+1).padStart(2,'0')}.mp3`);
+let currentStage=0;
 let masteredLetters=new Set(JSON.parse(localStorage.getItem('iqraMasteredLetters')||'[]'));
 function getLetterName(ch){return (letterData.find(x=>x[0]===ch)||[ch,ch])[1]}
 function speakText(txt){if(!soundEnabled)return;try{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.62;u.pitch=1;u.volume=1;speechSynthesis.speak(u)}catch(e){}}
@@ -297,6 +293,7 @@ function selectLetter(i,autoPlay=true){
   const nameEl=document.getElementById('selectedLetterName'), labelEl=document.getElementById('videoLetterLabel'), badgeEl=document.getElementById('letterStateBadge');
   if(nameEl)nameEl.textContent=name;
   if(labelEl)labelEl.textContent='النطق المرجعي: '+name;
+  const audioEl=document.getElementById('letterAudio');if(audioEl){audioEl.src=letterAudioFiles[selectedLetterIndex];audioEl.load()}
   if(badgeEl)badgeEl.textContent=masteredLetters.has(ch)?'متقن':'قيد التعلم';
   if(document.getElementById('letters')?.classList.contains('active')){
     fitTraceCanvas();
@@ -305,17 +302,17 @@ function selectLetter(i,autoPlay=true){
   }
   if(autoPlay)speakSelectedLetter();
 }
-function playSelectedVideoSegment(){
-  const video=document.getElementById('lettersVideo'), note=document.getElementById('videoSourceNote');
-  const [ch,name]=letterData[selectedLetterIndex],seg=videoSegments[ch];
-  clearTimeout(videoStopTimer);
-  if(!video||!seg){if(note)note.textContent='سيُستخدم النطق العربي المدمج لهذا الحرف.';speakText(name);return}
-  if(note)note.textContent='تشغيل النطق الصحيح من الفيديو التعليمي المرفق.';
-  const start=()=>{try{video.currentTime=seg[0]}catch(_){};video.play().then(()=>{videoStopTimer=setTimeout(()=>video.pause(),Math.max(500,(seg[1]-seg[0])*1000))}).catch(()=>{if(note)note.textContent='اضغط تشغيل الفيديو مرة واحدة، ثم أعد اختيار الحرف.'})};
-  if(video.readyState<1){video.addEventListener('loadedmetadata',start,{once:true});video.load()}else start();
-  video.ontimeupdate=()=>{if(video.currentTime>=seg[1]){video.pause();video.ontimeupdate=null}}
+function playSelectedLetterAudio(){
+  const audio=document.getElementById('letterAudio'), note=document.getElementById('videoSourceNote');
+  const [,name]=letterData[selectedLetterIndex];
+  if(!audio){speakText(name);return}
+  const src=letterAudioFiles[selectedLetterIndex];
+  if(audio.getAttribute('src')!==src){audio.src=src;audio.load()}
+  if(note)note.textContent='تشغيل النطق الصحيح لحرف '+name+'.';
+  audio.currentTime=0;
+  audio.play().catch(()=>{if(note)note.textContent='اضغط زر التشغيل للاستماع إلى الحرف.'});
 }
-function speakSelectedLetter(){playSelectedVideoSegment()}
+function speakSelectedLetter(){playSelectedLetterAudio()}
 function nextLetter(){selectLetter((selectedLetterIndex+1)%letterData.length);clearTrace()}
 const traceCanvas=document.getElementById('traceCanvas'),tctx=traceCanvas.getContext('2d'),freeCanvas=document.getElementById('freeCanvas'),fctx=freeCanvas.getContext('2d');let drawing=false,tracePoints=0,freeDrawing=false,freePoints=0;
 function fitOneCanvas(canvas,ctx){
@@ -357,7 +354,7 @@ let resizeTimer;
 window.addEventListener('resize',()=>{clearTimeout(resizeTimer);resizeTimer=setTimeout(()=>{if(document.getElementById('letters')?.classList.contains('active'))fitTraceCanvas()},120)});
 
 let huntTarget='ب',huntTimer=null,huntSpawn=null,huntRemaining=30,huntScoreValue=0,huntRunning=false;
-function repeatGameSound(){const i=letters.indexOf(huntTarget);if(i>=0){const old=selectedLetterIndex;selectedLetterIndex=i;playSelectedVideoSegment();selectedLetterIndex=old}else speakText(getLetterName(huntTarget))}
+function repeatGameSound(){const i=letters.indexOf(huntTarget);if(i>=0){const old=selectedLetterIndex;selectedLetterIndex=i;playSelectedLetterAudio();selectedLetterIndex=old}else speakText(getLetterName(huntTarget))}
 function startLetterHunt(){stopLetterHunt();huntRunning=true;huntRemaining=30;huntScoreValue=0;huntScore.textContent='0';huntTime.textContent='30';fallingLetters.innerHTML='';chooseHuntTarget();huntTimer=setInterval(()=>{huntRemaining--;huntTime.textContent=huntRemaining;if(huntRemaining<=0)finishLetterHunt()},1000);huntSpawn=setInterval(spawnFallingLetter,850);for(let i=0;i<4;i++)setTimeout(spawnFallingLetter,i*180)}
 function chooseHuntTarget(){huntTarget=letters[Math.floor(Math.random()*letters.length)];gamePrompt.textContent='التقط حرف «'+huntTarget+'» — '+getLetterName(huntTarget);speakText(getLetterName(huntTarget))}
 function spawnFallingLetter(){if(!huntRunning)return;const el=document.createElement('button');const isTarget=Math.random()<.32;const ch=isTarget?huntTarget:letters[Math.floor(Math.random()*letters.length)];el.className='falling-letter';el.textContent=ch;el.style.right=(4+Math.random()*84)+'%';el.style.animationDuration=(3.2+Math.random()*2.5)+'s';el.onclick=()=>hitFallingLetter(el,ch);el.addEventListener('animationend',()=>el.remove());fallingLetters.appendChild(el)}

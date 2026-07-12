@@ -1,5 +1,5 @@
-const CACHE='iqra-enterprise-v1-2-certificates';
-const ASSETS=['./','./index.html','./manifest.json','./icon.svg','./icon-192.png','./icon-512.png','./media/letters-correct-reading.mp4'];
+const CACHE='iqra-enterprise-v1-3-letter-audio';
+const ASSETS=["./","./index.html","./manifest.json","./icon.svg","./icon-192.png","./icon-512.png","./media/letters-audio/01.mp3","./media/letters-audio/02.mp3","./media/letters-audio/03.mp3","./media/letters-audio/04.mp3","./media/letters-audio/05.mp3","./media/letters-audio/06.mp3","./media/letters-audio/07.mp3","./media/letters-audio/08.mp3","./media/letters-audio/09.mp3","./media/letters-audio/10.mp3","./media/letters-audio/11.mp3","./media/letters-audio/12.mp3","./media/letters-audio/13.mp3","./media/letters-audio/14.mp3","./media/letters-audio/15.mp3","./media/letters-audio/16.mp3","./media/letters-audio/17.mp3","./media/letters-audio/18.mp3","./media/letters-audio/19.mp3","./media/letters-audio/20.mp3","./media/letters-audio/21.mp3","./media/letters-audio/22.mp3","./media/letters-audio/23.mp3","./media/letters-audio/24.mp3","./media/letters-audio/25.mp3","./media/letters-audio/26.mp3","./media/letters-audio/27.mp3","./media/letters-audio/28.mp3"];
 self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
 self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k!==CACHE).map(k=>caches.delete(k))))));
 self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
