@@ -1,249 +1,170 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0b6b78">
-  <meta name="description" content="منصة اقرأ وتعلّم الصيفية للأطفال">
-  <title>اقرأ وتعلّم</title>
-  <link rel="manifest" href="manifest.json">
-  <link rel="icon" href="assets/icons/icon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="assets/css/app.css">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>اقرأ وتعلّم | Enterprise V1</title>
+<meta name="theme-color" content="#0b6b78" />
+<link rel="manifest" href="manifest.json">
+<style>
+:root{--teal:#0b6b78;--teal2:#0f8796;--mint:#e8f8f5;--gold:#d8a437;--cream:#fffaf0;--ink:#20313b;--soft:#f4fbfb;--rose:#fff1ef;--green:#4b8b63;--shadow:0 18px 45px rgba(10,74,84,.16);--r:28px}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Arial,sans-serif;color:var(--ink);background:radial-gradient(circle at top right,#dff8f5 0 24%,transparent 24%),linear-gradient(135deg,#fefdf8,#eaf9fb 55%,#fff7e8);min-height:100vh}.app{max-width:1180px;margin:auto;padding:18px}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;position:sticky;top:0;background:rgba(255,255,255,.74);backdrop-filter:blur(16px);z-index:5;border:1px solid rgba(255,255,255,.7);border-radius:22px;padding:10px 12px;box-shadow:0 8px 30px rgba(0,0,0,.06)}.brand{display:flex;gap:10px;align-items:center}.logo{width:54px;height:54px;border-radius:18px;background:linear-gradient(145deg,var(--teal),#14a3ac);display:grid;place-items:center;color:#fff;font-size:28px;box-shadow:var(--shadow)}h1,h2,h3,p{margin:0}.brand h1{font-size:24px}.brand p{font-size:13px;color:#557}.tabs{display:flex;gap:8px;flex-wrap:wrap}.tabs button,.btn{border:0;border-radius:16px;padding:12px 16px;background:#fff;color:var(--teal);font-weight:800;box-shadow:0 4px 14px rgba(0,0,0,.06);cursor:pointer}.tabs button.active,.btn.primary{background:linear-gradient(135deg,var(--teal),var(--teal2));color:white}.btn.gold{background:linear-gradient(135deg,#f4c95d,var(--gold));color:#4b3502}.hero{margin-top:18px;display:grid;grid-template-columns:1.08fr .92fr;gap:18px}.card{background:rgba(255,255,255,.83);border:1px solid rgba(255,255,255,.95);border-radius:var(--r);padding:20px;box-shadow:var(--shadow);position:relative;overflow:hidden}.card:before{content:"";position:absolute;inset:auto -60px -90px auto;width:190px;height:190px;background:radial-gradient(circle,rgba(216,164,55,.18),transparent 60%);border-radius:50%}.title{font-size:34px;line-height:1.4}.subtitle{color:#48616b;margin-top:8px}.pattern{background-image:linear-gradient(45deg,rgba(11,107,120,.08) 25%,transparent 25%),linear-gradient(-45deg,rgba(216,164,55,.08) 25%,transparent 25%);background-size:26px 26px;border-radius:24px;padding:14px;margin-top:16px}.progress{height:16px;background:#e7eeee;border-radius:999px;overflow:hidden}.bar{height:100%;background:linear-gradient(90deg,var(--green),var(--gold));width:42%;border-radius:999px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:18px}.tile{border:0;text-align:right;background:#fff;border-radius:24px;padding:18px;min-height:130px;box-shadow:0 10px 28px rgba(11,107,120,.1);cursor:pointer;transition:.2s}.tile:hover{transform:translateY(-4px) scale(1.01)}.icon{font-size:34px;display:block;margin-bottom:8px}.section{display:none;margin-top:18px}.section.active{display:block}.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}.list{display:grid;gap:10px}.item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#fff;border-radius:18px;padding:12px 14px;box-shadow:0 6px 18px rgba(0,0,0,.06)}.badge{background:var(--mint);color:var(--teal);border-radius:999px;padding:6px 10px;font-weight:800}.muted{color:#64757d;font-size:14px}.ayat{font-size:22px;line-height:2;background:#fff8e7;border-radius:22px;padding:14px;border:1px solid #f3e3bb}.recordBox{display:grid;gap:12px}.meter{height:9px;background:#eee;border-radius:99px;overflow:hidden}.meter span{display:block;height:100%;background:#df4b4b;width:0%}.gameArea{min-height:250px;background:linear-gradient(180deg,#fff,#f2fbfa);border-radius:24px;padding:16px;border:2px dashed rgba(11,107,120,.18)}.letters{display:flex;gap:10px;flex-wrap:wrap}.letter{font-size:32px;font-weight:900;border:0;background:#fff;border-radius:20px;width:74px;height:74px;box-shadow:0 10px 22px rgba(0,0,0,.08);cursor:pointer}.ok{outline:4px solid #8ed39c}.bad{outline:4px solid #f7a1a1}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border-radius:22px;padding:16px;text-align:center;box-shadow:0 8px 22px rgba(0,0,0,.06)}.stat b{font-size:26px;color:var(--teal)}.cert{background:#fff;border:8px double var(--gold);border-radius:22px;padding:24px;text-align:center;max-width:760px;margin:auto}.cert h2{font-size:42px;color:var(--teal)}.rights{margin-top:18px;text-align:center;color:#50636b;font-size:14px;line-height:1.9}.noBreak{white-space:nowrap}.modal{position:fixed;inset:0;background:rgba(2,29,36,.55);display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.modal.show{display:flex}.modal .card{max-width:520px;width:100%;text-align:center}@media(max-width:850px){.hero,.two{grid-template-columns:1fr}.grid{grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.title{font-size:28px}.tabs{width:100%}.tabs button{flex:1}}@media(max-width:520px){.grid{grid-template-columns:1fr}.brand h1{font-size:20px}.top{align-items:flex-start;flex-direction:column}.tile{min-height:105px}}
+
+.formGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.field{display:grid;gap:6px}.field label{font-weight:800;color:var(--teal)}.field input,.field select{width:100%;border:1px solid #d8e4e6;border-radius:14px;padding:12px;font:inherit;background:#fff}.approval{display:flex;gap:8px;align-items:center;background:#fff8e7;border-radius:16px;padding:12px}.cert-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:18px;font-size:13px;color:#53636a}.cert-logo{width:76px;height:76px;margin:auto}.qrbox{width:110px;height:110px;margin:14px auto 0;background:#fff;border:1px solid #ddd;border-radius:12px;padding:7px}.qrbox img{width:100%;height:100%;object-fit:contain}.achievements{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:16px 0}.achievement{background:var(--mint);border-radius:999px;padding:8px 12px;font-weight:800;color:var(--teal)}
+@media(max-width:650px){.formGrid{grid-template-columns:1fr}}
+@media print{body{background:#fff}.top,.rights,.no-print,.tabs{display:none!important}.app{max-width:none;padding:0}.section{display:none!important}#certificate{display:block!important;margin:0}.cert{border-radius:0;box-shadow:none;max-width:none;min-height:95vh;display:flex;flex-direction:column;justify-content:center}.cert .btn,.certEditor{display:none!important}}
+
+/* Enterprise V1.1: المرشد النجمي وشريط التقدم المرئي */
+.sound-toggle{display:flex;align-items:center;gap:7px;border:0;border-radius:14px;padding:10px 12px;background:#fff;color:var(--teal);font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.06)}
+.journey-wrap{margin-top:16px;background:linear-gradient(135deg,#fffdf7,#f2fbfa);border:1px solid rgba(216,164,55,.28);border-radius:24px;padding:16px}
+.journey-head{display:flex;justify-content:space-between;gap:12px;align-items:center;flex-wrap:wrap}.progress-value{font-size:22px;font-weight:900;color:var(--teal)}
+.journey-line{position:relative;display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:18px;padding-top:4px}.journey-line:before{content:"";position:absolute;right:7%;left:7%;top:24px;height:5px;border-radius:99px;background:#dfe9e9}.journey-fill{position:absolute;right:7%;top:24px;height:5px;border-radius:99px;background:linear-gradient(90deg,var(--gold),var(--green));width:0;transition:width .7s ease}
+.station{position:relative;z-index:1;text-align:center;color:#849297;font-size:12px;font-weight:800}.station-dot{width:44px;height:44px;border-radius:50%;margin:0 auto 7px;background:#eef3f3;border:4px solid #fff;box-shadow:0 5px 15px rgba(0,0,0,.08);display:grid;place-items:center;font-size:19px;transition:.3s}.station.done,.station.current{color:var(--teal)}.station.done .station-dot{background:linear-gradient(145deg,#f6cc68,var(--gold));color:#fff}.station.current .station-dot{background:linear-gradient(145deg,var(--teal2),var(--teal));color:#fff;transform:scale(1.08);box-shadow:0 0 0 7px rgba(11,107,120,.11)}
+.star-guide{position:fixed;left:22px;bottom:22px;z-index:18;display:flex;align-items:flex-end;gap:10px;pointer-events:none}.guide-star{width:66px;height:66px;display:grid;place-items:center;font-size:53px;color:#e2ad35;filter:drop-shadow(0 8px 12px rgba(132,91,6,.22));animation:starGlow 2.8s ease-in-out infinite}.guide-bubble{max-width:290px;background:#fff;border:1px solid rgba(216,164,55,.35);border-radius:22px 22px 7px 22px;padding:12px 15px;box-shadow:var(--shadow);font-weight:800;color:#43565e;opacity:0;transform:translateY(8px);transition:.28s}.star-guide.show .guide-bubble{opacity:1;transform:translateY(0)}
+.spark{position:fixed;z-index:30;pointer-events:none;color:#e2ad35;font-size:20px;animation:sparkUp 1.15s ease-out forwards}@keyframes starGlow{0%,100%{transform:scale(1);filter:drop-shadow(0 8px 12px rgba(132,91,6,.18))}50%{transform:scale(1.08);filter:drop-shadow(0 0 15px rgba(226,173,53,.55))}}@keyframes sparkUp{0%{opacity:0;transform:translate(0,8px) scale(.5)}25%{opacity:1}100%{opacity:0;transform:translate(var(--dx),-90px) scale(1.2)}}
+.celebrate-card{border:1px solid rgba(216,164,55,.35);background:linear-gradient(135deg,#fffdf5,#effbf8)}
+@media(max-width:700px){.journey-line{grid-template-columns:repeat(3,1fr);row-gap:18px}.journey-line:before,.journey-fill{display:none}.star-guide{left:10px;bottom:10px}.guide-star{width:52px;height:52px;font-size:43px}.guide-bubble{max-width:230px;font-size:13px}}
+</style>
 </head>
 <body>
-<div class="app-shell">
-  <header class="topbar">
-    <button class="brand" type="button" data-go="home" aria-label="الرئيسية">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 64 64"><path d="M10 16c10-4 18-2 22 2v34c-6-5-14-7-22-4V16Zm44 0c-10-4-18-2-22 2v34c6-5 14-7 22-4V16Z"/><path d="M32 18v34"/></svg>
-      </span>
-      <span><strong>اقرأ وتعلّم</strong><small>رحلة الطفل الأولى مع القرآن</small></span>
-    </button>
-    <button class="menu-btn" id="menuBtn" aria-label="فتح القائمة">☰</button>
-    <nav class="role-nav" id="roleNav">
-      <button class="active" data-go="home">الطفل</button>
-      <button data-go="teacher">المعلمة</button>
-      <button data-go="supervisor">المشرفة</button>
-      <button data-go="manager">المديرة</button>
-    </nav>
-  </header>
+<div class="app">
+<header class="top">
+  <div class="brand"><div class="logo"><img src="icon.svg" alt="أيقونة اقرأ وتعلّم" style="width:42px;height:42px"></div><div><h1>اقرأ وتعلّم</h1><p>رحلة الطفل الأولى مع القرآن</p></div></div>
+  <nav class="tabs">
+    <button class="active" data-tab="child">الطفل</button><button data-tab="teacher">المعلمة</button><button data-tab="parent">ولي الأمر</button><button data-tab="supervisor">المشرفة</button><button data-tab="manager">المديرة</button>
+  <button id="soundToggle" class="sound-toggle" type="button" onclick="toggleSound()" aria-label="تشغيل أو كتم الأصوات">🔊 الأصوات</button></nav>
+</header>
 
-  <main>
-    <section class="page active" id="home">
-      <div class="hero-grid">
-        <article class="card hero-card">
-          <span class="eyebrow">منصة صيفية تفاعلية</span>
-          <h1>خطوات صغيرة… وأثر كبير مع كتاب الله</h1>
-          <p>استماع، تسميع صوتي، حروف، ألعاب، مكافآت ومتابعة تعليمية في تجربة واحدة.</p>
-          <div class="progress-box">
-            <div class="progress-head"><b>تقدمي اليوم</b><span id="progressText">42%</span></div>
-            <div class="progress"><span id="mainProgress"></span></div>
-            <div class="quick-stats"><span>⭐ <b id="starsCount">8</b> نجوم</span><span>🏆 <b id="badgesCount">2</b> مكافآت</span></div>
-          </div>
-          <div class="actions">
-            <button class="btn primary" data-go="quran">ابدأ الرحلة</button>
-            <button class="btn soft" data-go="record">التسميع الصوتي</button>
-          </div>
-        </article>
-
-        <article class="card today-card">
-          <h2>مهام اليوم</h2>
-          <div class="task"><span class="task-icon">١</span><div><b>استمع للآيات 1–2</b><small>بصوت الشيخ محمود خليل الحصري</small></div><span class="status ready">جاهز</span></div>
-          <div class="task"><span class="task-icon">٢</span><div><b>سجّل قراءتك</b><small>ثم استمع إليها قبل الإرسال</small></div><span class="status">بانتظارك</span></div>
-          <div class="task"><span class="task-icon">٣</span><div><b>تعلّم الحروف</b><small>ا، أ، ب</small></div><span class="status">حروف</span></div>
-          <div class="task"><span class="task-icon">٤</span><div><b>العب واكسب</b><small>لعبة الحرف الصحيح</small></div><span class="status">+10</span></div>
-        </article>
-      </div>
-
-      <div class="feature-grid">
-        <button class="feature quran" data-go="quran"><span class="feature-icon">۞</span><b>سورة العلق</b><small>التوزيع اليومي المعتمد</small></button>
-        <button class="feature record" data-go="record"><span class="feature-icon">◉</span><b>التسميع الصوتي</b><small>تسجيل وإرسال للمعلمة</small></button>
-        <button class="feature letters" data-go="letters"><span class="feature-icon">أ ب</span><b>الحروف</b><small>اسم الحرف وصوته</small></button>
-        <button class="feature games" data-go="games"><span class="feature-icon">✦</span><b>الألعاب التعليمية</b><small>تعلم من خلال اللعب</small></button>
-        <button class="feature rewards" id="rewardBtn"><span class="feature-icon">★</span><b>صندوق المكافآت</b><small>افتح جائزتك</small></button>
-        <button class="feature achievements" data-go="achievements"><span class="feature-icon">✓</span><b>إنجازاتي</b><small>تقدمي وأوسمتي</small></button>
-      </div>
-    </section>
-
-    <section class="page" id="quran">
-      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">مسار القرآن</span><h1>سورة العلق</h1></div></div>
-      <div class="content-grid">
-        <article class="card">
-          <div class="day-selector">
-            <label for="daySelect">اختر اليوم</label>
-            <select id="daySelect"></select>
-          </div>
-          <div class="verse-card" id="verseText"></div>
-          <div class="reciter">
-            <span class="reciter-badge">صوت القارئ</span>
-            <div><b>الشيخ محمود خليل الحصري</b><small>تلاوة مرتلة تعليمية</small></div>
-          </div>
-          <audio id="husaryPlayer" controls preload="none"></audio>
-          <div class="audio-actions">
-            <button class="btn primary" id="playVerses">تشغيل الآيات</button>
-            <button class="btn soft" id="repeatThree">تكرار 3 مرات</button>
-            <button class="btn soft" data-go="record">سجّل قراءتي</button>
-          </div>
-          <p class="note">يحتاج تشغيل التلاوة إلى اتصال بالإنترنت في نسخة الاختبار. يمكن لاحقًا إضافة الملفات الصوتية داخل المشروع للعمل دون إنترنت.</p>
-        </article>
-
-        <article class="card">
-          <h2>خطة الحفظ</h2>
-          <div class="plan-list" id="planList"></div>
-        </article>
-      </div>
-    </section>
-
-    <section class="page" id="record">
-      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التسميع</span><h1>سجّل قراءتك</h1></div></div>
-      <article class="card recorder-card">
-        <div class="record-status"><span class="record-dot" id="recordDot"></span><b id="recordState">جاهز للتسجيل</b><time id="recordTimer">00:00</time></div>
-        <div class="wave" id="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-        <div class="audio-actions">
-          <button class="btn primary" id="startRecord">ابدأ التسجيل</button>
-          <button class="btn danger" id="stopRecord" disabled>إيقاف</button>
-          <button class="btn soft" id="deleteRecord" disabled>إعادة التسجيل</button>
-          <button class="btn gold" id="sendRecord" disabled>إرسال للمعلمة</button>
+<section id="child" class="section active">
+  <div class="hero">
+    <div class="card">
+      <h2 class="title">أهلًا بك في رحلة اقرأ وتعلّم</h2>
+      <p class="subtitle">منصة تعليمية تفاعلية تجمع بين سورة العلق بصوت الشيخ محمود خليل الحصري، والحروف، والتسميع الصوتي، والألعاب، والجوائز.</p>
+      <div class="journey-wrap">
+        <div class="journey-head"><div><b>رحلتي في اقرأ وتعلّم</b><p class="muted">يضيء المسار كلما أنجزت محطة جديدة</p></div><span class="progress-value"><span id="progressPercent">42</span>%</span></div>
+        <div class="progress" style="margin-top:12px"><div id="mainBar" class="bar"></div></div>
+        <div class="journey-line" id="journeyLine"><div class="journey-fill" id="journeyFill"></div>
+          <div class="station" data-step="0"><div class="station-dot">✦</div><span>البداية</span></div>
+          <div class="station" data-step="1"><div class="station-dot">أ</div><span>الحروف</span></div>
+          <div class="station" data-step="2"><div class="station-dot">📖</div><span>سورة العلق</span></div>
+          <div class="station" data-step="3"><div class="station-dot">🎙️</div><span>التسميع</span></div>
+          <div class="station" data-step="4"><div class="station-dot">◆</div><span>الأوسمة</span></div>
+          <div class="station" data-step="5"><div class="station-dot">🎓</div><span>الشهادة</span></div>
         </div>
-        <audio id="recordPlayback" controls hidden></audio>
-        <div class="message" id="recordMessage"></div>
-        <p class="note">التسجيل يعمل فقط عند فتح المنصة عبر HTTPS مثل GitHub Pages أو Firebase Hosting، أو عبر localhost.</p>
-      </article>
-    </section>
-
-    <section class="page" id="letters">
-      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التبيان</span><h1>عالم الحروف</h1></div></div>
-      <article class="card">
-        <p class="lead">اضغط على الحرف لسماع اسمه، ثم جرّب التمرين.</p>
-        <div class="letters-grid" id="lettersGrid"></div>
-      </article>
-    </section>
-
-    <section class="page" id="games">
-      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">تعلم والعب</span><h1>لعبة الحرف الصحيح</h1></div></div>
-      <article class="card game-card">
-        <div class="scorebar"><span>النقاط: <b id="score">0</b></span><span>المحاولات: <b id="tries">0</b></span></div>
-        <h2 id="gameQuestion">اختر الحرف الصحيح</h2>
-        <div class="game-options" id="gameOptions"></div>
-        <div class="game-feedback" id="gameFeedback"></div>
-        <button class="btn primary" id="newRound">جولة جديدة</button>
-      </article>
-    </section>
-
-    <section class="page" id="achievements">
-      <div class="page-heading"><button class="back" data-go="home">‹</button><div><span class="eyebrow">التقدم</span><h1>إنجازاتي</h1></div></div>
-      <div class="stats-grid">
-        <article class="metric"><b id="metricStars">8</b><span>نجوم</span></article>
-        <article class="metric"><b>42%</b><span>نسبة الإنجاز</span></article>
-        <article class="metric"><b>3</b><span>أيام مكتملة</span></article>
-        <article class="metric"><b>2</b><span>أوسمة</span></article>
+        <p class="muted" style="margin-top:12px">النجوم: <b id="stars">8</b> ⭐ | الجوائز: <b id="gifts">2</b> 🏆</p>
       </div>
-      <article class="card">
-        <h2>أوسمتي</h2>
-        <div class="badges">
-          <div class="badge-card earned"><span>★</span><b>القارئ المجتهد</b></div>
-          <div class="badge-card earned"><span>أ</span><b>إتقان الحروف</b></div>
-          <div class="badge-card locked"><span>✓</span><b>المواظبة</b></div>
-          <div class="badge-card locked"><span>۞</span><b>إتمام السورة</b></div>
-        </div>
-      </article>
-    </section>
-
-    <section class="page" id="teacher">
-      <div class="page-heading"><div><span class="eyebrow">لوحة المعلمة</span><h1>متابعة الأطفال</h1></div></div>
-      <div class="stats-grid">
-        <article class="metric"><b>18</b><span>طفلًا</span></article>
-        <article class="metric"><b id="newRecords">1</b><span>تسجيل جديد</span></article>
-        <article class="metric"><b>76%</b><span>الإنجاز</span></article>
-        <article class="metric"><b>42</b><span>نجوم اليوم</span></article>
+      <button class="btn primary" onclick="showTab('quran')" style="margin-top:14px">ابدأ الرحلة ✨</button>
+    </div>
+    <div class="card">
+      <h3>مهام اليوم</h3><div class="list" style="margin-top:12px">
+        <div class="item"><span>📖 استمع للآيات 1–2</span><span class="badge">اليوم 1</span></div>
+        <div class="item"><span>🎙️ سجّل قراءتك</span><span class="badge">بانتظارك</span></div>
+        <div class="item"><span>🔤 حرف أ / ب / ت</span><span class="badge">حروف</span></div>
+        <div class="item"><span>🎮 لعبة الحرف الصحيح</span><span class="badge">+10</span></div>
       </div>
-      <article class="card">
-        <div class="table-title"><h2>التسميعات الأخيرة</h2><span class="status ready">تجريبي</span></div>
-        <div class="student-list" id="teacherStudents"></div>
-      </article>
-    </section>
-
-    <section class="page" id="supervisor">
-      <div class="page-heading"><div><span class="eyebrow">لوحة المشرفة</span><h1>مؤشرات الأداء</h1></div></div>
-      <div class="stats-grid">
-        <article class="metric"><b>90%</b><span>الحضور</span></article>
-        <article class="metric"><b>71%</b><span>إتمام السورة</span></article>
-        <article class="metric"><b>84%</b><span>إتقان الحروف</span></article>
-        <article class="metric"><b>12</b><span>تسجيلات اليوم</span></article>
-      </div>
-      <div class="content-grid">
-        <article class="card">
-          <h2>الأداء حسب الفصل</h2>
-          <div class="performance-row"><span>الروضة أ</span><div><i style="width:92%"></i></div><b>92%</b></div>
-          <div class="performance-row"><span>الروضة ب</span><div><i style="width:78%"></i></div><b>78%</b></div>
-          <div class="performance-row"><span>التمهيدي</span><div><i style="width:69%"></i></div><b>69%</b></div>
-        </article>
-        <article class="card">
-          <h2>يحتاج إلى متابعتي اليوم</h2>
-          <div class="alert-item yellow"><b>3 أطفال</b><span>لم يرسلوا تسميعًا منذ يومين</span></div>
-          <div class="alert-item red"><b>5 تسجيلات</b><span>بانتظار تقييم المعلمة</span></div>
-          <div class="alert-item green"><b>طفلان</b><span>استحقا شهادة الإتمام</span></div>
-        </article>
-      </div>
-      <article class="card">
-        <h2>سماع قراءات الأطفال</h2>
-        <p class="note">ستظهر التسجيلات الحقيقية هنا بعد ربط Firebase Storage. في نسخة الاختبار تظهر عينات محلية فقط.</p>
-        <div class="student-list" id="supervisorStudents"></div>
-      </article>
-    </section>
-
-    <section class="page" id="manager">
-      <div class="page-heading"><div><span class="eyebrow">لوحة المديرة</span><h1>نظرة شاملة</h1></div></div>
-      <div class="stats-grid">
-        <article class="metric"><b>45</b><span>الأطفال</span></article>
-        <article class="metric"><b>128</b><span>التسجيلات</span></article>
-        <article class="metric"><b>36</b><span>شهادة مستحقة</span></article>
-        <article class="metric"><b>88%</b><span>الإنجاز العام</span></article>
-      </div>
-      <div class="content-grid">
-        <article class="card"><h2>مؤشرات مباشرة</h2>
-          <div class="manager-line"><span>أكثر فصل نشاطًا</span><b>الروضة أ</b></div>
-          <div class="manager-line"><span>أكثر المعلمات تفاعلًا</span><b>المعلمة الأولى</b></div>
-          <div class="manager-line"><span>التسميعات المعتمدة اليوم</span><b>31</b></div>
-        </article>
-        <article class="card"><h2>الشهادات</h2>
-          <p class="lead">النظام الكامل للشهادات يُفعّل بعد ربط قاعدة البيانات واعتماد بيانات الأطفال.</p>
-          <button class="btn primary" id="previewCertificate">معاينة شهادة تجريبية</button>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div><b>المحتوى التعليمي</b><span>جمعية فرقان لتحفيظ القرآن بالطائف</span></div>
-    <div><b>فكرة وتصميم وإخراج</b><span class="nowrap">أ. تهاني القرشي</span></div>
-    <div><b>إشراف</b><span class="nowrap">أ. غالية الغامدي</span></div>
-  </footer>
-</div>
-
-<div class="modal" id="rewardModal" aria-hidden="true">
-  <div class="modal-card">
-    <button class="modal-close" data-close>×</button>
-    <div class="reward-symbol">★</div>
-    <h2>مبارك!</h2>
-    <p id="rewardText">حصلت على وسام القارئ المجتهد</p>
-    <button class="btn primary" data-close>رائع</button>
+    </div>
   </div>
-</div>
+  <div class="grid">
+    <button class="tile" onclick="showTab('quran')"><span class="icon">📖</span><b>سورة العلق</b><p class="muted">حسب التوزيع المعتمد</p></button>
+    <button class="tile" onclick="showTab('record')"><span class="icon">🎤</span><b>التسميع الصوتي</b><p class="muted">تسجيل وإرسال للمعلمة</p></button>
+    <button class="tile" onclick="showTab('letters')"><span class="icon">🔤</span><b>الحروف</b><p class="muted">صوت الحرف وكتابته</p></button>
+    <button class="tile" onclick="showTab('games')"><span class="icon">🎮</span><b>الألعاب التعليمية</b><p class="muted">مرتبطة بالحروف والآيات</p></button>
+    <button class="tile" onclick="openGift()"><span class="icon">🎁</span><b>صندوق المكافآت</b><p class="muted">افتح جائزتك</p></button>
+    <button class="tile" onclick="showTab('certificate')"><span class="icon">🎓</span><b>الشهادة</b><p class="muted">إصدار واعتماد وطباعة</p></button>
+  </div>
+</section>
 
-<div class="modal" id="certificateModal" aria-hidden="true">
-  <div class="certificate">
-    <button class="modal-close" data-close>×</button>
-    <div class="cert-logo">اقرأ وتعلّم</div>
+<section id="quran" class="section">
+  <div class="two"><div class="card"><h2>📖 سورة العلق</h2><p class="subtitle">مسار الحفظ اليومي</p><div class="ayat" style="margin-top:14px">اقْرَأْ بِاسْمِ رَبِّكَ الَّذِي خَلَقَ ۝ خَلَقَ الْإِنسَانَ مِنْ عَلَقٍ</div><div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" onclick="playHusary()">استمع بصوت الشيخ الحصري</button><button class="btn" onclick="pauseHusary()">إيقاف مؤقت</button><button class="btn" onclick="showTab('record')">سجّل قراءتي</button><audio id="husaryAudio" preload="none"></audio><p class="muted" id="reciterState" style="margin-top:10px">القارئ: الشيخ محمود خليل الحصري</p></div></div><div class="card"><h3>توزيع سورة العلق</h3><div class="list" id="ayahPlan"></div></div></div>
+</section>
+<section id="record" class="section"><div class="card recordBox"><h2>🎤 التسميع الصوتي</h2><p class="subtitle">يسمح المتصفح بالتسجيل بعد الضغط على زر البدء.</p><div class="item"><span>الحالة: <b id="recState">جاهز للتسجيل</b></span><span class="badge" id="timer">00:00</span></div><div class="meter"><span id="meter"></span></div><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn primary" id="startRec">ابدأ التسجيل</button><button class="btn" id="stopRec" disabled>إيقاف</button><button class="btn gold" id="sendRec" disabled>إرسال للمعلمة</button></div><audio id="playback" controls style="width:100%;display:none"></audio><p class="muted">ملاحظة: التسجيل يحفظ محليًا داخل المتصفح في هذا الإصدار التجريبي.</p></div></section>
+<section id="letters" class="section"><div class="card"><h2>🔤 عالم الحروف</h2><p class="subtitle">اضغط على الحرف لسماع اسمه، ثم انتقل للعبة.</p><div class="letters" id="letterList" style="margin-top:14px"></div></div></section>
+<section id="games" class="section"><div class="card"><h2>🎮 الألعاب التعليمية</h2><p class="subtitle" id="gamePrompt">اختاري الحرف الصحيح: ب</p><div class="gameArea"><div class="letters" id="gameLetters"></div><p id="gameMsg" style="margin-top:18px;font-weight:900"></p></div><button class="btn primary" onclick="newGame()" style="margin-top:12px">لعبة جديدة</button></div></section>
+<section id="certificate" class="section">
+  <div class="two certEditor no-print">
+    <div class="card">
+      <h2>إصدار الشهادة</h2><p class="subtitle">راجعي البيانات ثم اعتمدي الإصدار.</p>
+      <div class="formGrid" style="margin-top:14px">
+        <div class="field"><label>اسم الطفل/ـة</label><input id="certName" value="سارة محمد"></div>
+        <div class="field"><label>اسم المركز</label><input id="certCenter" value="مركز زينب بنت العوام"></div>
+        <div class="field"><label>اسم المعلمة</label><input id="certTeacher" value="المعلمة نورة"></div>
+        <div class="field"><label>المستوى</label><select id="certLevel"><option>المستوى الذهبي</option><option>المستوى الفضي</option><option>المستوى البرونزي</option></select></div>
+        <div class="field"><label>تاريخ الإصدار</label><input id="certDate" type="date"></div>
+        <div class="field"><label>رقم الشهادة</label><input id="certId" readonly></div>
+      </div>
+      <label class="approval" style="margin-top:14px"><input id="certApproved" type="checkbox"> تم اعتماد إكمال متطلبات البرنامج من المعلمة</label>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:14px"><button class="btn primary" onclick="issueCertificate()">إصدار الشهادة</button><button class="btn" onclick="window.print()">طباعة / حفظ PDF</button></div>
+      <p id="certStatus" class="muted" style="margin-top:10px">لن تُصدر الشهادة قبل اعتماد المعلمة.</p>
+    </div>
+    <div class="card"><h3>شروط الاستحقاق</h3><div class="list" style="margin-top:12px"><div class="item"><span>إتمام سورة العلق</span><span class="badge">مكتمل</span></div><div class="item"><span>إتقان الحروف المستهدفة</span><span class="badge">مكتمل</span></div><div class="item"><span>تسليم التسجيلات المطلوبة</span><span class="badge">مكتمل</span></div><div class="item"><span>اعتماد المعلمة</span><span class="badge" id="approvalBadge">بانتظار الاعتماد</span></div></div></div>
+  </div>
+  <div class="cert" id="certificatePaper" style="margin-top:16px">
+    <img src="icon.svg" class="cert-logo" alt="شعار اقرأ وتعلّم">
+    <p style="font-weight:800;color:#49636b">جمعية فرقان لتحفيظ القرآن بالطائف</p>
     <h2>شهادة شكر وتقدير</h2>
-    <p>تُمنح للطفل/ـة</p>
-    <h3>اسم الطفل</h3>
-    <p>لإتمام رحلة اقرأ وتعلّم الصيفية بنجاح</p>
-    <div class="cert-signatures"><span>المعلمة</span><span>المشرفة</span><span>المديرة</span></div>
-    <button class="btn primary" onclick="window.print()">طباعة</button>
+    <p style="font-size:20px;margin-top:12px">تُمنح للطفل/ـة</p>
+    <h3 id="outName" style="font-size:34px;margin:12px 0;color:#233">سارة محمد</h3>
+    <p style="font-size:18px;line-height:1.9">لإتمامه/ـا متطلبات برنامج <b>اقرأ وتعلّم</b> بنجاح، سائلين الله أن يبارك في علمه/ـا وعمله/ـا.</p>
+    <div class="achievements"><span class="achievement">حافظ سورة العلق</span><span class="achievement">نجم الحروف</span><span class="achievement">قارئ مجتهد</span></div>
+    <p id="outLevel" style="font-weight:900;color:var(--gold);font-size:20px">المستوى الذهبي</p>
+    <div class="two" style="margin-top:24px"><p>المعلمة<br><b id="outTeacher">المعلمة نورة</b></p><p>المركز<br><b id="outCenter">مركز زينب بنت العوام</b></p></div>
+    <div class="qrbox"><img id="certQr" alt="رمز التحقق من الشهادة"></div>
+    <div class="cert-meta"><span>رقم الشهادة: <b id="outId">—</b></span><span>تاريخ الإصدار: <b id="outDate">—</b></span></div>
   </div>
-</div>
+</section>
 
-<script src="assets/js/app.js"></script>
-</body>
-</html>
+<section id="teacher" class="section"><div class="card"><h2>لوحة المعلمة</h2><p class="subtitle">متابعة الأطفال والتسميع والحضور والمهارات اليومية.</p><div class="stats" style="margin-top:14px"><div class="stat"><b>18</b><p>إجمالي الأطفال</p></div><div class="stat"><b id="teacherRec">1</b><p>تسجيل جديد</p></div><div class="stat"><b>76%</b><p>متوسط الإنجاز</p></div><div class="stat"><b>15</b><p>حضور اليوم</p></div></div><div class="two" style="margin-top:16px"><div><h3>التسميعات الواردة</h3><div class="list" id="teacherList" style="margin-top:12px"></div></div><div><h3>المهام السريعة</h3><div class="list" style="margin-top:12px"><div class="item"><span>إضافة طفل جديد</span><button class="btn" onclick="alert('سيُفعّل الربط عند إضافة قاعدة البيانات')">إضافة</button></div><div class="item"><span>تسجيل الحضور</span><button class="btn" onclick="alert('تم فتح سجل الحضور التجريبي')">فتح</button></div><div class="item"><span>تقييم الحروف</span><span class="badge">14 مكتمل</span></div><div class="item"><span>إرسال ملاحظة لولي الأمر</span><button class="btn gold" onclick="alert('تم فتح نموذج الملاحظة')">إرسال</button></div></div></div></div></div></section>
+<section id="parent" class="section"><div class="card"><h2>لوحة ولي الأمر</h2><p class="subtitle">متابعة مستوى الطفل والإنجازات والتوصيات المنزلية.</p><div class="stats" style="margin-top:14px"><div class="stat"><b>81%</b><p>نسبة التقدم</p></div><div class="stat"><b>14</b><p>حرفًا متقنًا</p></div><div class="stat"><b>3</b><p>أوسمة</p></div><div class="stat"><b>5</b><p>تسجيلات معتمدة</p></div></div><div class="two" style="margin-top:16px"><div><h3>آخر الإنجازات</h3><div class="list" style="margin-top:12px"><div class="item"><span>إتقان الآيات 1–5</span><span class="badge">مكتمل</span></div><div class="item"><span>وسام نجم الحروف</span><span class="badge">جديد</span></div><div class="item"><span>آخر تسجيل صوتي</span><span class="badge">معتمد</span></div></div></div><div><h3>توصية المعلمة</h3><div class="item" style="margin-top:12px"><span>مراجعة الآيات 4–5، والتدرب على حرفي «ث» و«خ» لمدة عشر دقائق.</span></div><button class="btn gold" onclick="showTab('certificate')" style="margin-top:12px">عرض الشهادة</button></div></div></div></section>
+<section id="supervisor" class="section"><div class="card"><h2>لوحة المشرفة</h2><p class="subtitle">متابعة أداء الفصول والمعلمات ومراجعة عينات القراءة.</p><div class="stats" style="margin-top:14px"><div class="stat"><b>90%</b><p>نسبة الحضور</p></div><div class="stat"><b>71%</b><p>إتمام السورة</p></div><div class="stat"><b>84%</b><p>إتقان الحروف</p></div><div class="stat"><b>12</b><p>تسجيلات اليوم</p></div></div><div class="two" style="margin-top:16px"><div><h3>أداء الفصول</h3><div class="list" style="margin-top:12px"><div class="item"><span>روضة أ</span><span class="badge">92%</span></div><div class="item"><span>روضة ب</span><span class="badge">78%</span></div><div class="item"><span>التمهيدي</span><span class="badge">69%</span></div></div></div><div><h3>المتابعة الإشرافية</h3><div class="list" style="margin-top:12px"><div class="item"><span>قراءات بانتظار المراجعة</span><span class="badge">6</span></div><div class="item"><span>معلمات أكملن التحديث اليومي</span><span class="badge">3 من 4</span></div><div class="item"><span>فصل يحتاج دعمًا</span><span class="badge">التمهيدي</span></div><div class="item"><span>تقرير الأداء الأسبوعي</span><button class="btn" onclick="alert('سيتم إنشاء التقرير بعد ربط البيانات')">عرض</button></div></div></div></div></div></section>
+<section id="manager" class="section"><div class="card"><h2>لوحة المديرة الذهبية</h2><p class="subtitle">إحصاءات مباشرة ومؤشرات لاتخاذ القرار.</p><div class="stats" style="margin-top:14px"><div class="stat"><b>45</b><p>إجمالي الأطفال</p></div><div class="stat"><b>4</b><p>المعلمات</p></div><div class="stat"><b>128</b><p>إجمالي التسجيلات</p></div><div class="stat"><b>81%</b><p>نسبة الإنجاز العامة</p></div></div><div class="two" style="margin-top:16px"><div><h3>المؤشرات المباشرة</h3><div class="list" style="margin-top:12px"><div class="item"><span>أكثر طفل تميزًا</span><span class="badge">سارة</span></div><div class="item"><span>أكثر فصل نشاطًا</span><span class="badge">روضة أ</span></div><div class="item"><span>أكثر معلمة تفاعلًا</span><span class="badge">المعلمة نورة</span></div><div class="item"><span>شهادات مستحقة</span><span class="badge">36</span></div><div class="item"><span>شهادات تم إصدارها</span><span class="badge" id="issuedCount">12</span></div></div></div><div><h3>تنبيهات الإدارة</h3><div class="list" style="margin-top:12px"><div class="item"><span>لم يسجلوا منذ يومين</span><span class="badge">3 أطفال</span></div><div class="item"><span>تسجيلات لم تُراجع</span><span class="badge">6</span></div><div class="item"><span>متوسط رضا أولياء الأمور</span><span class="badge">88%</span></div><div class="item"><span>التقرير التنفيذي</span><button class="btn gold" onclick="alert('سيُفعّل التقرير التنفيذي بعد ربط Firebase')">عرض</button></div></div></div></div></div></section>
+
+<div class="rights"><b>المحتوى التعليمي</b><br>جمعية فرقان لتحفيظ القرآن بالطائف<br><b>فكرة وتصميم وإخراج</b><br><span class="noBreak">أ. تهاني القرشي</span><br><b>إشراف</b><br><span class="noBreak">أ. غالية الغامدي</span></div>
+</div>
+<div id="starGuide" class="star-guide" aria-live="polite"><div id="guideBubble" class="guide-bubble">أهلًا بك في رحلة اقرأ وتعلّم.</div><div class="guide-star" aria-hidden="true">★</div></div>
+<div id="giftModal" class="modal"><div class="card celebrate-card"><h2>🎁 مبارك!</h2><p id="giftText" style="font-size:22px;margin:14px 0">حصلت على وسام القارئ المجتهد</p><button class="btn primary" onclick="closeGift()">إغلاق</button></div></div>
+<script>
+
+const PROGRESS_KEY='iqraEnterpriseProgressV11';
+let soundEnabled=localStorage.getItem('iqraSoundEnabled')!=='false';
+let progressState={percent:42,completed:[0,1]};
+try{const savedProgress=JSON.parse(localStorage.getItem(PROGRESS_KEY)||'null');if(savedProgress)progressState={...progressState,...savedProgress}}catch(e){}
+function saveProgress(){localStorage.setItem(PROGRESS_KEY,JSON.stringify(progressState))}
+function renderProgress(){
+  const pct=Math.max(0,Math.min(100,Number(progressState.percent)||0));
+  const b=document.getElementById('mainBar'),v=document.getElementById('progressPercent'),f=document.getElementById('journeyFill');
+  if(b)b.style.width=pct+'%';if(v)v.textContent=pct;if(f)f.style.width=(pct*.86)+'%';
+  document.querySelectorAll('.station').forEach((el,i)=>{el.classList.toggle('done',progressState.completed.includes(i));el.classList.toggle('current',!progressState.completed.includes(i)&&i===Math.min(5,Math.floor(pct/20)))})
+}
+function setProgress(percent,step,message){const old=progressState.percent;progressState.percent=Math.max(progressState.percent,percent);if(step!=null&&!progressState.completed.includes(step))progressState.completed.push(step);saveProgress();renderProgress();if(progressState.percent>old){showGuide(message||'أضاء نجمك أكثر!');sparkles();successSound()}}
+function toggleSound(){soundEnabled=!soundEnabled;localStorage.setItem('iqraSoundEnabled',soundEnabled);renderSoundToggle();if(soundEnabled){successSound();showGuide('تم تشغيل الأصوات التشجيعية.')}}
+function renderSoundToggle(){const b=document.getElementById('soundToggle');if(b)b.innerHTML=soundEnabled?'🔊 الأصوات':'🔇 الأصوات'}
+function tone(freq,duration=.13,delay=0){if(!soundEnabled)return;try{const C=window.AudioContext||window.webkitAudioContext;const ctx=window.__iqraAudioCtx||(window.__iqraAudioCtx=new C());const o=ctx.createOscillator(),g=ctx.createGain();o.type='sine';o.frequency.value=freq;g.gain.setValueAtTime(.001,ctx.currentTime+delay);g.gain.exponentialRampToValueAtTime(.11,ctx.currentTime+delay+.02);g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+delay+duration);o.connect(g).connect(ctx.destination);o.start(ctx.currentTime+delay);o.stop(ctx.currentTime+delay+duration+.03)}catch(e){}}
+function successSound(){tone(523,.12,0);tone(659,.12,.11);tone(784,.19,.22)}
+function gentleTrySound(){tone(392,.10,0);tone(440,.14,.12)}
+let guideTimer;
+function showGuide(text,ms=3600){const g=document.getElementById('starGuide'),b=document.getElementById('guideBubble');if(!g||!b)return;b.textContent=text;g.classList.add('show');clearTimeout(guideTimer);guideTimer=setTimeout(()=>g.classList.remove('show'),ms)}
+function sparkles(){for(let i=0;i<9;i++){const e=document.createElement('span');e.className='spark';e.textContent=i%2?'✦':'★';e.style.left=(35+Math.random()*80)+'px';e.style.bottom=(35+Math.random()*35)+'px';e.style.setProperty('--dx',(Math.random()*100-50)+'px');document.body.appendChild(e);setTimeout(()=>e.remove(),1300)}}
+function encourage(text,kind='success'){showGuide(text);if(kind==='success')successSound();else gentleTrySound()}
+renderProgress();renderSoundToggle();setTimeout(()=>showGuide('أهلًا بك في رحلة اقرأ وتعلّم. هيا نضيء أولى المحطات!'),700);
+
+const sections=[...document.querySelectorAll('.section')]; const tabBtns=[...document.querySelectorAll('.tabs button')];
+function showTab(id){sections.forEach(s=>s.classList.remove('active')); document.getElementById(id)?.classList.add('active'); tabBtns.forEach(b=>b.classList.toggle('active',b.dataset.tab===id)); window.scrollTo({top:0,behavior:'smooth'});} tabBtns.forEach(b=>b.onclick=()=>showTab(b.dataset.tab));
+const plan=['آية 1–2','آية 3','آية 4–5','آية 6','آية 7–8','آية 9 + مراجعة','آية 10','آية 11–12','آية 13 + مراجعة','آية 14','آية 15','آية 16 + مراجعة','آية 17','آية 18','آية 19 + مراجعة'];
+document.getElementById('ayahPlan').innerHTML=plan.map((p,i)=>`<div class="item"><span>اليوم ${i+1}: ${p}</span><span class="badge">${i<3?'مفتوح':'قريبًا'}</span></div>`).join('');
+const letters='ابتثجحخدذرزسشصضطظعغفقكلمنهوي'.split('');
+letterList.innerHTML=letters.map(l=>`<button class="letter" onclick="say('${l}')">${l}</button>`).join('');
+function say(txt){if(!soundEnabled)return;try{speechSynthesis.cancel();let u=new SpeechSynthesisUtterance(txt);u.lang='ar-SA';u.rate=.75;speechSynthesis.speak(u)}catch(e){}}
+const husaryTracks=['https://everyayah.com/data/Husary_64kbps/096001.mp3','https://everyayah.com/data/Husary_64kbps/096002.mp3'];let husaryIndex=0;const husaryAudio=document.getElementById('husaryAudio');function playHusary(){husaryIndex=0;husaryAudio.src=husaryTracks[husaryIndex];reciterState.textContent='جاري تشغيل الآية الأولى بصوت الشيخ الحصري';husaryAudio.play().catch(()=>{reciterState.textContent='تعذر التشغيل؛ تحقق من اتصال الإنترنت ثم أعد المحاولة'});}function pauseHusary(){husaryAudio.pause();reciterState.textContent='تم إيقاف التلاوة مؤقتًا'}husaryAudio.addEventListener('ended',()=>{husaryIndex++;if(husaryIndex<husaryTracks.length){husaryAudio.src=husaryTracks[husaryIndex];reciterState.textContent='جاري تشغيل الآية الثانية بصوت الشيخ الحصري';husaryAudio.play();}else{husaryIndex=0;reciterState.textContent='اكتمل الاستماع للآيتين بصوت الشيخ الحصري';setProgress(50,2,'ما شاء الله، اكتمل الاستماع. واصل تقدمك.');}});
+let target='ب'; function newGame(){target=letters[Math.floor(Math.random()*letters.length)]; gamePrompt.textContent='اختاري الحرف الصحيح: '+target; let opts=[target]; while(opts.length<5){let l=letters[Math.floor(Math.random()*letters.length)]; if(!opts.includes(l))opts.push(l)} opts.sort(()=>Math.random()-.5); gameLetters.innerHTML=opts.map(l=>`<button class="letter" onclick="checkGame(this,'${l}')">${l}</button>`).join(''); gameMsg.textContent='';} function checkGame(btn,l){if(l===target){btn.classList.add('ok');gameMsg.textContent='أحسنت ⭐ +10 نقاط';stars.textContent=Number(stars.textContent)+1;setProgress(58,2,'أحسنت! أضأت محطة جديدة في رحلتك.');say('أحسنت')}else{btn.classList.add('bad');gameMsg.textContent='حاولي مرة أخرى';encourage('لا بأس، أنت قريبة من الإجابة. حاولي مرة أخرى.','try');say('حاولي مرة أخرى')}} newGame();
+function openGift(){let gifts=['وسام القارئ المجتهد 🏅','نجمتان إضافيتان ⭐⭐','وسام إتقان الحروف 🔤','كأس بطل اليوم 🏆'];giftText.textContent=gifts[Math.floor(Math.random()*gifts.length)];giftModal.classList.add('show');encourage('مبارك! حصلت على مكافأة جديدة.');setProgress(74,3,'رائع! تقدمت خطوة جديدة نحو الشهادة.')} function closeGift(){giftModal.classList.remove('show')}
+let mediaRecorder,chunks=[],sec=0,int; startRec.onclick=async()=>{try{let stream=await navigator.mediaDevices.getUserMedia({audio:true}); mediaRecorder=new MediaRecorder(stream); chunks=[]; mediaRecorder.ondataavailable=e=>chunks.push(e.data); mediaRecorder.onstop=()=>{let blob=new Blob(chunks,{type:'audio/webm'}); playback.src=URL.createObjectURL(blob); playback.style.display='block'; sendRec.disabled=false; stream.getTracks().forEach(t=>t.stop())}; mediaRecorder.start(); startRec.disabled=true; stopRec.disabled=false; recState.textContent='جاري التسجيل'; sec=0; int=setInterval(()=>{sec++; timer.textContent='00:'+String(sec).padStart(2,'0'); meter.style.width=(sec%10)*10+'%'},1000)}catch(e){alert('لم يسمح المتصفح باستخدام الميكروفون')}}; stopRec.onclick=()=>{mediaRecorder?.stop();clearInterval(int);startRec.disabled=false;stopRec.disabled=true;recState.textContent='تم التسجيل'}; sendRec.onclick=()=>{recState.textContent='تم الإرسال للمعلمة';teacherRec.textContent=Number(teacherRec.textContent)+1;setProgress(76,3,'تم إرسال تسجيلك للمعلمة. أحسنت!');alert('تم إرسال التسجيل للمعلمة بنجاح')};
+teacherList.innerHTML=['سارة','عبدالله','مريم','يوسف'].map((n,i)=>`<div class="item"><span>${n}<br><small class="muted">آيات اليوم والتسجيلات</small></span><span><button class="btn" onclick="alert('تشغيل تسجيل ${n} التجريبي')">استماع</button> <button class="btn gold" onclick="alert('تم اعتماد تسميع ${n}')">اعتماد</button></span></div>`).join('');
+
+function makeCertId(){const d=new Date();return 'IQRA-'+d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+'-'+Math.random().toString(36).slice(2,8).toUpperCase()}
+function setDefaultCertDate(){const el=document.getElementById('certDate');if(el&&!el.value)el.value=new Date().toISOString().slice(0,10);const id=document.getElementById('certId');if(id&&!id.value)id.value=makeCertId()}
+function issueCertificate(){setDefaultCertDate();if(!certApproved.checked){certStatus.textContent='يرجى اعتماد إكمال المتطلبات أولًا.';certStatus.style.color='#b33';return}outName.textContent=certName.value.trim()||'اسم الطفل/ـة';outCenter.textContent=certCenter.value.trim()||'اسم المركز';outTeacher.textContent=certTeacher.value.trim()||'اسم المعلمة';outLevel.textContent=certLevel.value;outId.textContent=certId.value;outDate.textContent=certDate.value;approvalBadge.textContent='تم الاعتماد';certStatus.textContent='تم إصدار الشهادة بنجاح، ويمكن طباعتها أو حفظها PDF.';certStatus.style.color='var(--green)';const verify='https://iqra-wataallam.local/verify?id='+encodeURIComponent(certId.value);certQr.src='https://api.qrserver.com/v1/create-qr-code/?size=180x180&data='+encodeURIComponent(verify);localStorage.setItem('iqraCertificate',JSON.stringify({name:certName.value,center:certCenter.value,teacher:certTeacher.value,level:certLevel.value,date:certDate.value,id:certId.value}));const c=document.getElementById('issuedCount');if(c)c.textContent=Number(c.textContent)+1;setProgress(100,5,'مبارك! اكتملت رحلتك وأصبحت شهادتك جاهزة.')}
+certApproved?.addEventListener('change',()=>approvalBadge.textContent=certApproved.checked?'جاهز للإصدار':'بانتظار الاعتماد');setDefaultCertDate();
+const saved=localStorage.getItem('iqraCertificate');if(saved){try{const x=JSON.parse(saved);certName.value=x.name||'';certCenter.value=x.center||'';certTeacher.value=x.teacher||'';certLevel.value=x.level||'المستوى الذهبي';certDate.value=x.date||'';certId.value=x.id||makeCertId()}catch(e){}}
+
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(()=>{})}
+</script>
+</body></html>

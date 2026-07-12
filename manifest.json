@@ -1,18 +1,16 @@
 {
-  "name": "اقرأ وتعلّم",
+  "name": "اقرأ وتعلّم | Enterprise V1",
   "short_name": "اقرأ وتعلّم",
-  "lang": "ar",
-  "dir": "rtl",
+  "description": "منصة تعليمية مؤسسية للأطفال لتعلم القرآن والحروف ومتابعة الإنجاز والشهادات.",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#fffaf0",
   "theme_color": "#0b6b78",
+  "lang": "ar",
+  "dir": "rtl",
   "icons": [
-    {
-      "src": "assets/icons/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
-    }
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
   ]
 }
