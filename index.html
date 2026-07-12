@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>اقرأ وتعلّم | Enterprise V1</title>
+<title>اقرأ وتعلّم | Enterprise V1.3 Day 3</title>
 <meta name="theme-color" content="#0b6b78" />
 <link rel="manifest" href="manifest.json">
 <style>
@@ -33,6 +33,9 @@
 .restart-btn{border:1px solid rgba(201,151,43,.55);background:linear-gradient(135deg,#fffdf6,#f7ecd1);font-weight:800}
 .restart-symbol{width:64px;height:64px;border-radius:50%;display:grid;place-items:center;margin:0 auto 10px;background:rgba(201,151,43,.14);font-size:34px;color:var(--gold);font-weight:900}
 #restartModal.show{display:flex}
+
+/* Enterprise V1.3 Day 3: Game Studio */
+.game-tabs{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}.game-tabs button{border:0;border-radius:999px;padding:10px 14px;background:#edf7f6;color:var(--teal);font-weight:900;cursor:pointer}.game-tabs button.active{background:linear-gradient(135deg,var(--teal),var(--teal2));color:#fff}.game-panel{display:none}.game-panel.active{display:block}.balloon-field{position:relative;height:420px;overflow:hidden;border-radius:26px;background:linear-gradient(#dff8ff 0 72%,#eef7d5 72%);border:2px solid rgba(11,107,120,.16)}.balloon{position:absolute;bottom:-110px;width:76px;height:92px;border-radius:50% 50% 48% 48%;display:grid;place-items:center;font-size:34px;font-weight:900;background:linear-gradient(145deg,#fff5c9,#f1bd45);box-shadow:inset -8px -10px 0 rgba(255,255,255,.22),0 10px 22px rgba(0,0,0,.16);border:3px solid rgba(216,164,55,.65);cursor:pointer;animation:floatBalloon linear forwards}.balloon:after{content:"";position:absolute;bottom:-26px;width:2px;height:28px;background:#8d7a51}.balloon.pop{animation:none;transform:scale(1.35);opacity:0;transition:.3s}@keyframes floatBalloon{from{bottom:-110px;transform:translateX(0)}to{bottom:430px;transform:translateX(18px)}}.choice-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:14px}.choice-card{border:0;border-radius:22px;min-height:90px;background:#fff;font-size:34px;font-weight:900;box-shadow:0 8px 20px rgba(0,0,0,.08);cursor:pointer}.choice-card:hover{transform:translateY(-2px)}.memory-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.memory-card{height:90px;border:0;border-radius:18px;background:linear-gradient(145deg,var(--teal2),var(--teal));color:#fff;font-size:30px;font-weight:900;cursor:pointer;box-shadow:0 8px 18px rgba(0,0,0,.1)}.memory-card.revealed,.memory-card.matched{background:#fff;color:var(--teal);outline:3px solid #8ed39c}.word-bank,.word-slots{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:16px}.word-letter,.word-slot{width:68px;height:68px;border-radius:18px;display:grid;place-items:center;font-size:30px;font-weight:900}.word-letter{border:0;background:#fff;box-shadow:0 8px 18px rgba(0,0,0,.08);cursor:pointer}.word-slot{border:3px dashed #c9dede;background:#f9ffff}.game-result{margin-top:12px;font-weight:900;min-height:28px}.game-progress-row{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px}.game-progress-card{background:#fff;border-radius:18px;padding:12px;text-align:center}.game-progress-card b{display:block;color:var(--teal);font-size:20px}@media(max-width:700px){.choice-grid,.memory-grid,.game-progress-row{grid-template-columns:repeat(2,1fr)}.balloon-field{height:360px}}
 </style>
 </head>
 <body>
@@ -126,25 +129,38 @@
 </section>
 <section id="games" class="section">
   <div class="card">
-    <h2>🎮 ألعاب الحروف التفاعلية</h2>
-    <p class="subtitle">استمع إلى اسم الحرف، ثم التقط الحرف الصحيح قبل انتهاء الوقت.</p>
-    <div class="game-toolbar">
-      <button class="btn primary" onclick="startLetterHunt()">▶ ابدأ لعبة صيد الحرف</button>
-      <button class="btn" onclick="repeatGameSound()">🔊 إعادة سماع الحرف</button>
-      <span class="badge">النقاط: <b id="huntScore">0</b></span>
-      <span class="badge">الوقت: <b id="huntTime">30</b></span>
+    <h2>🎮 استوديو الألعاب التفاعلية</h2>
+    <p class="subtitle">ألعاب متنوعة مرتبطة بنطق الحروف والنجوم وشريط التقدم.</p>
+    <div class="game-progress-row">
+      <div class="game-progress-card"><b id="gamesStars">0 ⭐</b><span class="muted">نجوم الألعاب</span></div>
+      <div class="game-progress-card"><b id="gamesCompleted">0 / 5</b><span class="muted">ألعاب مكتملة</span></div>
+      <div class="game-progress-card"><b id="bestHunt">0</b><span class="muted">أفضل صيد</span></div>
+      <div class="game-progress-card"><b id="bestBalloon">0</b><span class="muted">أفضل بالونات</span></div>
     </div>
-    <div class="interactive-game" id="interactiveGame">
-      <div class="game-instruction" id="gamePrompt">اضغط «ابدأ لعبة صيد الحرف»</div>
-      <div id="fallingLetters" class="falling-letters"></div>
-      <div class="game-ground"></div>
+    <div class="game-tabs" id="gameTabs">
+      <button class="active" onclick="showGamePanel('huntGame',this)">صيد الحروف</button>
+      <button onclick="showGamePanel('balloonGame',this)">فرقعة البالونات</button>
+      <button onclick="showGamePanel('soundGame',this)">طابق الصوت</button>
+      <button onclick="showGamePanel('memoryGame',this)">الذاكرة</button>
+      <button onclick="showGamePanel('wordGame',this)">تكوين الكلمة</button>
     </div>
-    <p id="gameMsg" class="game-message"></p>
-    <div class="mini-game-card">
-      <h3>🧩 لعبة المطابقة</h3>
-      <p class="muted">اسحب بطاقة الحرف إلى اسمه الصحيح.</p>
-      <div id="matchGame" class="match-game"></div>
-      <button class="btn" onclick="newMatchGame()" style="margin-top:12px">لعبة مطابقة جديدة</button>
+    <div id="huntGame" class="game-panel active">
+      <div class="game-toolbar"><button class="btn primary" onclick="startLetterHunt()">▶ ابدأ صيد الحرف</button><button class="btn" onclick="repeatGameSound()">🔊 إعادة سماع الحرف</button><span class="badge">النقاط: <b id="huntScore">0</b></span><span class="badge">الوقت: <b id="huntTime">30</b></span></div>
+      <div class="interactive-game" id="interactiveGame"><div class="game-instruction" id="gamePrompt">اضغط «ابدأ صيد الحرف»</div><div id="fallingLetters" class="falling-letters"></div><div class="game-ground"></div></div><p id="gameMsg" class="game-message"></p>
+      <div class="mini-game-card"><h3>🧩 لعبة المطابقة</h3><p class="muted">اسحب بطاقة الحرف إلى اسمه الصحيح.</p><div id="matchGame" class="match-game"></div><button class="btn" onclick="newMatchGame()" style="margin-top:12px">مطابقة جديدة</button></div>
+    </div>
+    <div id="balloonGame" class="game-panel">
+      <div class="game-toolbar"><button class="btn primary" onclick="startBalloonGame()">🎈 ابدأ اللعبة</button><button class="btn" onclick="repeatBalloonSound()">🔊 اسمع الحرف</button><span class="badge">النقاط: <b id="balloonScore">0</b></span><span class="badge">الوقت: <b id="balloonTime">30</b></span></div>
+      <div id="balloonPrompt" class="pattern" style="text-align:center;font-weight:900">فرقّع البالون الذي يحمل الحرف المطلوب.</div><div id="balloonField" class="balloon-field"></div><p id="balloonMsg" class="game-result"></p>
+    </div>
+    <div id="soundGame" class="game-panel">
+      <div class="game-toolbar"><button class="btn primary" onclick="newSoundRound()">🔊 جولة جديدة</button><button class="btn" onclick="playSoundTarget()">إعادة الصوت</button></div><div id="soundPrompt" class="pattern" style="text-align:center;font-weight:900">استمع ثم اختر الحرف الصحيح.</div><div id="soundChoices" class="choice-grid"></div><p id="soundMsg" class="game-result"></p>
+    </div>
+    <div id="memoryGame" class="game-panel">
+      <div class="game-toolbar"><button class="btn primary" onclick="newMemoryGame()">🧠 لعبة جديدة</button><span class="badge">المحاولات: <b id="memoryMoves">0</b></span></div><p class="subtitle">طابق الحرف مع اسمه.</p><div id="memoryGrid" class="memory-grid"></div><p id="memoryMsg" class="game-result"></p>
+    </div>
+    <div id="wordGame" class="game-panel">
+      <div class="game-toolbar"><button class="btn primary" onclick="newWordGame()">📝 كلمة جديدة</button><button class="btn" onclick="clearWordSlots()">مسح</button></div><div id="wordHint" class="pattern" style="text-align:center;font-weight:900"></div><div id="wordSlots" class="word-slots"></div><div id="wordBank" class="word-bank"></div><p id="wordMsg" class="game-result"></p>
     </div>
   </div>
 </section>
@@ -206,6 +222,7 @@ function confirmRestartJourney(){
   localStorage.removeItem('iqraCertificate');
   localStorage.removeItem('iqraLetterMastery');
   localStorage.removeItem('iqraGameScores');
+  localStorage.removeItem(GAME_KEY); gameState={stars:0,completed:[],bestHunt:0,bestBalloon:0}; renderGameStats();
   const st=document.getElementById('stars');if(st)st.textContent='0';
   saveProgress();renderProgress();closeRestartModal();showTab('child');
   showGuide('بدأت رحلة جديدة. هيا نضيء المحطة الأولى!');sparkles();
@@ -270,7 +287,7 @@ function checkTrace(){const ch=letterData[selectedLetterIndex][0];if(tracePoints
 renderStageNav();renderLetterList();setTimeout(()=>{fitTraceCanvas();selectLetter(0,false)},100);window.addEventListener('resize',fitTraceCanvas);
 
 let huntTarget='ب',huntTimer=null,huntSpawn=null,huntRemaining=30,huntScoreValue=0,huntRunning=false;
-function repeatGameSound(){const i=letters.indexOf(huntTarget);if(i>=0){const old=selectedLetterIndex;selectedLetterIndex=i;playSelectedVideoSegment();selectedLetterIndex=old}else repeatGameSound()}
+function repeatGameSound(){const i=letters.indexOf(huntTarget);if(i>=0){const old=selectedLetterIndex;selectedLetterIndex=i;playSelectedVideoSegment();selectedLetterIndex=old}else speakText(getLetterName(huntTarget))}
 function startLetterHunt(){stopLetterHunt();huntRunning=true;huntRemaining=30;huntScoreValue=0;huntScore.textContent='0';huntTime.textContent='30';fallingLetters.innerHTML='';chooseHuntTarget();huntTimer=setInterval(()=>{huntRemaining--;huntTime.textContent=huntRemaining;if(huntRemaining<=0)finishLetterHunt()},1000);huntSpawn=setInterval(spawnFallingLetter,850);for(let i=0;i<4;i++)setTimeout(spawnFallingLetter,i*180)}
 function chooseHuntTarget(){huntTarget=letters[Math.floor(Math.random()*letters.length)];gamePrompt.textContent='التقط حرف «'+huntTarget+'» — '+getLetterName(huntTarget);speakText(getLetterName(huntTarget))}
 function spawnFallingLetter(){if(!huntRunning)return;const el=document.createElement('button');const isTarget=Math.random()<.32;const ch=isTarget?huntTarget:letters[Math.floor(Math.random()*letters.length)];el.className='falling-letter';el.textContent=ch;el.style.right=(4+Math.random()*84)+'%';el.style.animationDuration=(3.2+Math.random()*2.5)+'s';el.onclick=()=>hitFallingLetter(el,ch);el.addEventListener('animationend',()=>el.remove());fallingLetters.appendChild(el)}
@@ -281,6 +298,36 @@ let matchItems=[];
 function newMatchGame(){const pool=[...letterData].sort(()=>Math.random()-.5).slice(0,4);matchItems=pool;const left=pool.map(x=>`<div class="drag-card" draggable="true" data-char="${x[0]}">${x[0]}</div>`).join('');const right=[...pool].sort(()=>Math.random()-.5).map(x=>`<div class="drop-card" data-char="${x[0]}">${x[1]}</div>`).join('');matchGame.innerHTML=`<div class="list">${left}</div><div class="list">${right}</div>`;matchGame.querySelectorAll('.drag-card').forEach(el=>{el.addEventListener('dragstart',e=>e.dataTransfer.setData('text/plain',el.dataset.char));el.addEventListener('click',()=>{matchGame.dataset.selected=el.dataset.char;matchGame.querySelectorAll('.drag-card').forEach(x=>x.classList.remove('active'));el.classList.add('active')})});matchGame.querySelectorAll('.drop-card').forEach(el=>{el.addEventListener('dragover',e=>e.preventDefault());el.addEventListener('drop',e=>{e.preventDefault();matchDrop(el,e.dataTransfer.getData('text/plain'))});el.addEventListener('click',()=>matchDrop(el,matchGame.dataset.selected||''))})}
 function matchDrop(drop,ch){if(!ch)return;if(drop.dataset.char===ch){drop.classList.add('matched');drop.textContent+=' ✓';const card=[...matchGame.querySelectorAll('.drag-card')].find(x=>x.dataset.char===ch);if(card){card.style.visibility='hidden'}successSound();if(matchGame.querySelectorAll('.drop-card.matched').length===matchItems.length){gameMsg.textContent='أحسنت! أكملت المطابقة كلها.';setProgress(72,3,'أكملت لعبة المطابقة بنجاح!')}}else{gentleTrySound();gameMsg.textContent='حاول مطابقة الحرف باسمه الصحيح.'}}
 newMatchGame();
+
+// Enterprise V1.3 Day 3 - Game Studio
+const GAME_KEY='iqraGameStudioV13';
+let gameState={stars:0,completed:[],bestHunt:0,bestBalloon:0};
+try{gameState={...gameState,...JSON.parse(localStorage.getItem(GAME_KEY)||'{}')}}catch(e){}
+function saveGameState(){localStorage.setItem(GAME_KEY,JSON.stringify(gameState));renderGameStats()}
+function renderGameStats(){if(document.getElementById('gamesStars'))gamesStars.textContent=gameState.stars+' ⭐';if(document.getElementById('gamesCompleted'))gamesCompleted.textContent=gameState.completed.length+' / 5';if(document.getElementById('bestHunt'))bestHunt.textContent=gameState.bestHunt||0;if(document.getElementById('bestBalloon'))bestBalloon.textContent=gameState.bestBalloon||0}
+function completeGame(name,stars=2,msg='أحسنت! أكملت اللعبة بنجاح.'){if(!gameState.completed.includes(name))gameState.completed.push(name);gameState.stars+=stars;saveGameState();setProgress(Math.min(84,68+gameState.completed.length*3),3,msg);showGuide(msg);sparkles();successSound()}
+function showGamePanel(id,btn){document.querySelectorAll('.game-panel').forEach(x=>x.classList.remove('active'));document.getElementById(id)?.classList.add('active');document.querySelectorAll('#gameTabs button').forEach(x=>x.classList.remove('active'));btn?.classList.add('active')}
+const oldFinishLetterHunt=finishLetterHunt;finishLetterHunt=function(){const score=huntScoreValue;oldFinishLetterHunt();gameState.bestHunt=Math.max(gameState.bestHunt,score);if(score>=40)completeGame('hunt',3,'رائع! أتممت لعبة صيد الحروف.');else saveGameState()}
+let balloonTarget='ا',balloonRunning=false,balloonScoreValue=0,balloonRemaining=30,balloonTimer=null,balloonSpawn=null;
+function chooseBalloonTarget(){balloonTarget=letters[Math.floor(Math.random()*letters.length)];balloonPrompt.textContent='فرقّع حرف «'+balloonTarget+'» — '+getLetterName(balloonTarget);speakText(getLetterName(balloonTarget))}
+function repeatBalloonSound(){speakText(getLetterName(balloonTarget))}
+function startBalloonGame(){stopBalloonGame();balloonRunning=true;balloonScoreValue=0;balloonRemaining=30;balloonScore.textContent='0';balloonTime.textContent='30';balloonField.innerHTML='';balloonMsg.textContent='';chooseBalloonTarget();balloonTimer=setInterval(()=>{balloonRemaining--;balloonTime.textContent=balloonRemaining;if(balloonRemaining<=0)finishBalloonGame()},1000);balloonSpawn=setInterval(spawnBalloon,760);for(let i=0;i<5;i++)setTimeout(spawnBalloon,i*160)}
+function spawnBalloon(){if(!balloonRunning)return;const el=document.createElement('button');const ch=Math.random()<.34?balloonTarget:letters[Math.floor(Math.random()*letters.length)];el.className='balloon';el.textContent=ch;el.style.right=(3+Math.random()*87)+'%';el.style.animationDuration=(4+Math.random()*2.2)+'s';el.onclick=()=>hitBalloon(el,ch);el.addEventListener('animationend',()=>el.remove());balloonField.appendChild(el)}
+function hitBalloon(el,ch){if(!balloonRunning)return;if(ch===balloonTarget){balloonScoreValue+=10;balloonScore.textContent=balloonScoreValue;el.classList.add('pop');balloonMsg.textContent='أحسنت! هذا هو الحرف الصحيح.';successSound();sparkles();setTimeout(()=>el.remove(),300);if(balloonScoreValue%30===0)chooseBalloonTarget()}else{balloonScoreValue=Math.max(0,balloonScoreValue-2);balloonScore.textContent=balloonScoreValue;balloonMsg.textContent='هذا حرف '+getLetterName(ch)+'، حاول مرة أخرى.';gentleTrySound();el.classList.add('bad');setTimeout(()=>el.remove(),350)}}
+function stopBalloonGame(){balloonRunning=false;clearInterval(balloonTimer);clearInterval(balloonSpawn)}
+function finishBalloonGame(){stopBalloonGame();balloonPrompt.textContent='انتهى الوقت — نتيجتك '+balloonScoreValue+' نقطة';gameState.bestBalloon=Math.max(gameState.bestBalloon,balloonScoreValue);if(balloonScoreValue>=40)completeGame('balloon',3,'ممتاز! أتممت لعبة فرقعة البالونات.');else saveGameState()}
+let soundTarget='ا';function playSoundTarget(){speakText(getLetterName(soundTarget))}
+function newSoundRound(){const pool=[...letters].sort(()=>Math.random()-.5).slice(0,4);soundTarget=pool[Math.floor(Math.random()*pool.length)];soundChoices.innerHTML=pool.map(ch=>`<button class="choice-card" onclick="answerSoundChoice(this,'${ch}')">${ch}</button>`).join('');soundMsg.textContent='';soundPrompt.textContent='استمع ثم اختر الحرف الصحيح';setTimeout(playSoundTarget,180)}
+function answerSoundChoice(el,ch){if(ch===soundTarget){el.classList.add('ok');soundMsg.textContent='إجابة صحيحة: '+getLetterName(ch);completeGame('sound',2,'أحسنت! طابقت الصوت بالحرف الصحيح.')}else{el.classList.add('bad');soundMsg.textContent='حاول مرة أخرى، واستمع جيدًا.';gentleTrySound()}}
+let memoryFirst=null,memoryLock=false,memoryPairs=0,memoryMoveCount=0;
+function newMemoryGame(){const pool=[...letterData].sort(()=>Math.random()-.5).slice(0,4);const cards=[];pool.forEach(([ch,name],i)=>{cards.push({pair:i,text:ch,type:'char'},{pair:i,text:name,type:'name'})});cards.sort(()=>Math.random()-.5);memoryFirst=null;memoryLock=false;memoryPairs=0;memoryMoveCount=0;memoryMoves.textContent='0';memoryMsg.textContent='';memoryGrid.innerHTML=cards.map((c,i)=>`<button class="memory-card" data-pair="${c.pair}" data-text="${c.text}" onclick="flipMemory(this)">★</button>`).join('')}
+function flipMemory(card){if(memoryLock||card.classList.contains('matched')||card===memoryFirst)return;card.classList.add('revealed');card.textContent=card.dataset.text;if(!memoryFirst){memoryFirst=card;return}memoryMoveCount++;memoryMoves.textContent=memoryMoveCount;if(memoryFirst.dataset.pair===card.dataset.pair){memoryFirst.classList.add('matched');card.classList.add('matched');memoryFirst=null;memoryPairs++;successSound();if(memoryPairs===4){memoryMsg.textContent='أحسنت! أكملت لعبة الذاكرة.';completeGame('memory',3,'ذاكرتك رائعة! أتممت جميع الأزواج.')}}else{memoryLock=true;gentleTrySound();setTimeout(()=>{[memoryFirst,card].forEach(x=>{x.classList.remove('revealed');x.textContent='★'});memoryFirst=null;memoryLock=false},850)}}
+const wordRounds=[['باب','كوّن كلمة: باب'],['تاج','كوّن كلمة: تاج'],['نور','كوّن كلمة: نور'],['قلم','كوّن كلمة: قلم'],['كتاب','كوّن كلمة: كتاب']];let currentWord='',wordPicked=[];
+function newWordGame(){const r=wordRounds[Math.floor(Math.random()*wordRounds.length)];currentWord=r[0];wordPicked=[];wordHint.textContent=r[1];wordSlots.innerHTML=[...currentWord].map(()=>'<div class="word-slot"></div>').join('');const mixed=[...currentWord].sort(()=>Math.random()-.5);wordBank.innerHTML=mixed.map((ch,i)=>`<button class="word-letter" data-i="${i}" onclick="pickWordLetter(this,'${ch}')">${ch}</button>`).join('');wordMsg.textContent=''}
+function pickWordLetter(btn,ch){if(btn.disabled)return;wordPicked.push(ch);btn.disabled=true;btn.style.opacity=.35;const slots=[...wordSlots.children];slots[wordPicked.length-1].textContent=ch;if(wordPicked.length===currentWord.length){const made=wordPicked.join('');if(made===currentWord){wordMsg.textContent='أحسنت! كوّنت الكلمة صحيحة.';completeGame('word',3,'رائع! كوّنت الكلمة بنجاح.')}else{wordMsg.textContent='الترتيب غير صحيح، حاول مرة أخرى.';gentleTrySound();setTimeout(clearWordSlots,700)}}}
+function clearWordSlots(){wordPicked=[];[...wordSlots.children].forEach(x=>x.textContent='');[...wordBank.children].forEach(x=>{x.disabled=false;x.style.opacity=1});wordMsg.textContent=''}
+renderGameStats();newSoundRound();newMemoryGame();newWordGame();
+
 function openGift(){let gifts=['وسام القارئ المجتهد 🏅','نجمتان إضافيتان ⭐⭐','وسام إتقان الحروف 🔤','كأس بطل اليوم 🏆'];giftText.textContent=gifts[Math.floor(Math.random()*gifts.length)];giftModal.classList.add('show');encourage('مبارك! حصلت على مكافأة جديدة.');setProgress(74,3,'رائع! تقدمت خطوة جديدة نحو الشهادة.')} function closeGift(){giftModal.classList.remove('show')}
 let mediaRecorder,chunks=[],sec=0,int; startRec.onclick=async()=>{try{let stream=await navigator.mediaDevices.getUserMedia({audio:true}); mediaRecorder=new MediaRecorder(stream); chunks=[]; mediaRecorder.ondataavailable=e=>chunks.push(e.data); mediaRecorder.onstop=()=>{let blob=new Blob(chunks,{type:'audio/webm'}); playback.src=URL.createObjectURL(blob); playback.style.display='block'; sendRec.disabled=false; stream.getTracks().forEach(t=>t.stop())}; mediaRecorder.start(); startRec.disabled=true; stopRec.disabled=false; recState.textContent='جاري التسجيل'; sec=0; int=setInterval(()=>{sec++; timer.textContent='00:'+String(sec).padStart(2,'0'); meter.style.width=(sec%10)*10+'%'},1000)}catch(e){alert('لم يسمح المتصفح باستخدام الميكروفون')}}; stopRec.onclick=()=>{mediaRecorder?.stop();clearInterval(int);startRec.disabled=false;stopRec.disabled=true;recState.textContent='تم التسجيل'}; sendRec.onclick=()=>{recState.textContent='تم الإرسال للمعلمة';teacherRec.textContent=Number(teacherRec.textContent)+1;setProgress(76,3,'تم إرسال تسجيلك للمعلمة. أحسنت!');alert('تم إرسال التسجيل للمعلمة بنجاح')};
 teacherList.innerHTML=['سارة','عبدالله','مريم','يوسف'].map((n,i)=>`<div class="item"><span>${n}<br><small class="muted">آيات اليوم والتسجيلات</small></span><span><button class="btn" onclick="alert('تشغيل تسجيل ${n} التجريبي')">استماع</button> <button class="btn gold" onclick="alert('تم اعتماد تسميع ${n}')">اعتماد</button></span></div>`).join('');
