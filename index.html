@@ -269,7 +269,7 @@ const letterData=[
 ['ا','ألف'],['ب','باء'],['ت','تاء'],['ث','ثاء'],['ج','جيم'],['ح','حاء'],['خ','خاء'],['د','دال'],['ذ','ذال'],['ر','راء'],['ز','زاي'],['س','سين'],['ش','شين'],['ص','صاد'],['ض','ضاد'],['ط','طاء'],['ظ','ظاء'],['ع','عين'],['غ','غين'],['ف','فاء'],['ق','قاف'],['ك','كاف'],['ل','لام'],['م','ميم'],['ن','نون'],['هـ','هاء'],['و','واو'],['ي','ياء']];
 const letters=letterData.map(x=>x[0]);let selectedLetterIndex=0;
 const letterStages=[[0,5],[5,10],[10,15],[15,20],[20,28]];
-const letterAudioFiles=letterData.map((_,i)=>`media/letters-audio/${String(i+1).padStart(2,'0')}.mp3`);
+const letterAudioFiles=letterData.map((_,i)=>`mp3.${String(i+1).padStart(2,'0')}`);
 let currentStage=0;
 let masteredLetters=new Set(JSON.parse(localStorage.getItem('iqraMasteredLetters')||'[]'));
 function getLetterName(ch){return (letterData.find(x=>x[0]===ch)||[ch,ch])[1]}
